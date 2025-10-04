@@ -7,25 +7,25 @@ import * as Components from './components'
 
 
 
+import avatar from './assets/avatar.jpg'
+import profIcon from './assets/profIcon.jpg'
 
-/* Навигация для спирта_1  */
-// import cat1 from './assets/01.jpg'
-// import cat2 from './assets/02.jpg'
-// import cat3 from './assets/03.jpg'
+
+
 
 const pages = {
   'login': [ Pages.Login ],
   'registration' : [Pages.Registration],
-  //'list' : [ Pages.List, 
-    //{
-    //  cats: [
-    //    {name: 'cat-1', avatar: cat1},
-    //    {name: 'cat-2', avatar: cat2, active: true},
-    //    {name: 'cat-3', avatar: cat3},
-    //  ],
-    //  showDialog: true
-    //}
-  //],
+  'chat-list'    : [Pages.ChatList, {
+    chats:[
+      {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'2' },
+      {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'3' }, 
+      {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet  Aut aperiam magnam ', mess_time:'10:49',mess_count:'' },
+     
+    ] ,
+    profIcon: profIcon
+  
+  }],
   'nav': [ Pages.Navigate ]
 };
 

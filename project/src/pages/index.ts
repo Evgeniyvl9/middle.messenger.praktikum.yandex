@@ -1,3 +1,4 @@
 export {Login}        from './login' 
 export {Registration} from './registration'
+export {ChatList}     from './chat-list'
 export {Navigate}     from './navigate'
