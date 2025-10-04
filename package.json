@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@types/handlebars": "^4.0.40",
     "vite": "^7.1.7"
   }
 }
