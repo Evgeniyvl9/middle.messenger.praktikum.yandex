@@ -31,3 +31,11 @@
         Выберите чат чтобы отправить сообщение
     </div>
 </div>
+
+{{#if showDialogAddUser}}
+    {{> DialogAddUser }}
+{{/if}}
+
+{{#if showDialogRemoveUser}}
+    {{>DialogRemoveUser}}
+{{/if}}

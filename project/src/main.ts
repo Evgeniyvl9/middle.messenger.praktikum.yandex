@@ -9,13 +9,15 @@ import * as Components from './components'
 
 import avatar from './assets/avatar.jpg'
 import profIcon from './assets/profIcon.jpg'
-
+import backIcon from './assets/back.png'
 
 
 
 const pages = {
   'login': [ Pages.Login ],
   'registration' : [Pages.Registration],
+
+
   'chat-list'    : [Pages.ChatList, {
     chats:[
       {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'2' },
@@ -23,9 +25,66 @@ const pages = {
       {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet  Aut aperiam magnam ', mess_time:'10:49',mess_count:'' },
      
     ] ,
-    profIcon: profIcon
+    profIcon: profIcon,
+    showDialogAddUser:true,
+    showDialogRemoveUser:true,
   
   }],
+  'chat-list_add_dialog'    : [Pages.ChatList, {
+    chats:[
+      {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'2' },
+      {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'3' }, 
+      {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet  Aut aperiam magnam ', mess_time:'10:49',mess_count:'' },
+     
+    ] ,
+    profIcon: profIcon,
+    showDialogAddUser:true,
+  }],
+  'chat-list_remove_dialog'    : [Pages.ChatList, {
+    chats:[
+      {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'2' },
+      {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'3' }, 
+      {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet  Aut aperiam magnam ', mess_time:'10:49',mess_count:'' },
+     
+    ] ,
+    profIcon: profIcon,
+    showDialogRemoveUser:true,
+  }],
+
+  'profile': [Pages.ProfilePage,{
+    profileInfo:{
+      avatar:avatar,
+      visibleParams:{
+        name:{
+          label:'Имя',
+          value:'Ivan'
+        },
+        lastName:{
+          label:'Фамилия',
+          value:'LastNameVal'
+        },
+        login:{
+          label:'Логин',
+          value:'LoginValue'
+        },
+        email:{
+          label:'Почта',
+          value:'emailVal'
+        },
+        pseudoName:{
+          label:'Имя в чате',
+          value:'pseudiname'
+        },
+        phoneNum:{
+          label:'Телефон',
+          value:'+7 (922) 243 23 23'
+        }
+      }
+     }
+     ,
+     backIcon: backIcon
+    }
+  ],
   'nav': [ Pages.Navigate ]
 };
 
