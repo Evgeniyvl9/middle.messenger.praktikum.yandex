@@ -85,7 +85,38 @@ const pages = {
      backIcon: backIcon
     }
   ],
-  'nav': [ Pages.Navigate ]
+
+
+  'profile_showDialogLoadFile': [Pages.ProfilePage,{
+     backIcon: backIcon,
+     showDialogLoadFile:true,
+    }
+  ],
+  
+  'profile_loadFileError': [Pages.ProfilePage,{
+     backIcon: backIcon,
+     showDialogLoadFile:true,
+     loadFileError:true
+    }
+  ],
+  
+  'profile_loadFileName': [Pages.ProfilePage,{
+      backIcon: backIcon,
+      showDialogLoadFile:true,
+      loadFileName:'pic.jpg'
+    }
+  ],
+
+  'profile_loadFileEmpty': [Pages.ProfilePage,{
+    backIcon: backIcon,
+    showDialogLoadFile:true,
+    loadFileEmpty:true
+  }
+  ],
+
+  'nav': [ Pages.Navigate ],
+  '404': [ Pages.Page404 ],
+  '500': [ Pages.Page500 ]
 };
 
 

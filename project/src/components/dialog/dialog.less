@@ -30,6 +30,11 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        &.error{
+            .dialog__title{
+                color: #FF2F2F;
+            }
+        }
 		.dialog__title { 
             text-align: center;
 		}
@@ -59,5 +64,16 @@
                 width: 100%;
 			}
 		}
+        .file_name{
+            text-align: center;
+            color: #8D8D8D;
+        }
+        .error_empty{color: #FF2F2F;
+            font-size: 11px;
+            text-align: center;
+            position: absolute;
+            bottom: 13px;
+            width: 100%;
+            left: 0;}
 	}
 }
