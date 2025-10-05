@@ -7,7 +7,7 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "start": "vite --port 3000",
+    "start": "npx vite --port 3000 --host",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
