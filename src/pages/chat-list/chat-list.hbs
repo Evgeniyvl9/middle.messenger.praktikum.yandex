@@ -1,0 +1,41 @@
+<div class="chat-list__container">
+    <div class="chat-list">
+        <div class="chat-list__top">
+            <div class="prof-link"> <a href="">Профиль <img src='{{profIcon}}' alt=""></a>   </div>
+            <form action="" class="chat-list__search">
+                <input type="text" placeholder="Поиск">
+            </form>
+        </div>
+        <div class="chat-list__middle">
+           {{#each chats}}
+            <div class="chat-list__element">
+                <img src="{{avatar}}" alt="" class="element__avatar">
+                <div class="element__content">
+                    <div class="element-content__user_name">
+                        {{name}}
+                    </div>
+                    <div class="element_content__last_mess">
+                       {{last_mess}}
+                    </div>
+                </div>
+                <div class="element__info">
+                    <div class="element-info__time">{{mess_time}}</div>
+                    <div class="element-info__no-read-count">{{mess_count}}</div>
+                </div>
+            </div>
+           {{/each}}
+                       
+        </div>
+    </div>
+    <div class="chat-detail">
+        Выберите чат чтобы отправить сообщение
+    </div>
+</div>
+
+{{#if showDialogAddUser}}
+    {{> DialogAddUser }}
+{{/if}}
+
+{{#if showDialogRemoveUser}}
+    {{>DialogRemoveUser}}
+{{/if}}
