@@ -15,7 +15,8 @@
         width: 100%;
         height: 100%;
         z-index: 101;
-        background-color: #00000069;
+        background-color: var(--background-color-dark);
+        opacity: 0.6;
 	}
 
 	.dialog { 
@@ -23,8 +24,8 @@
         z-index: 102;
         width: 340px;
         min-height: 257px;
-        background: #ffffff;
-        box-shadow: 0px 0px 6px 0px #00000024;
+        background-color: var(--background-color-light);
+        box-shadow: var(--box-shadow);
         border-radius: 12px;
         padding: 40px 30px;
         display: flex;
@@ -32,7 +33,7 @@
         justify-content: space-between;
         &.error{
             .dialog__title{
-                color: #FF2F2F;
+                color: var(--error-text-color);
             }
         }
 		.dialog__title { 
@@ -50,7 +51,6 @@
 				input { 
                     font-weight: 600;
                     font-size: 13px;
-                    leading-trim: NONE;
                     line-height: 13px;
                     letter-spacing: 0%;
                     
@@ -66,9 +66,9 @@
 		}
         .file_name{
             text-align: center;
-            color: #8D8D8D;
+            color: var(--text-color-second);
         }
-        .error_empty{color: #FF2F2F;
+        .error_empty{color:var(--error-text-color);
             font-size: 11px;
             text-align: center;
             position: absolute;
