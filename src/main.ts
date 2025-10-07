@@ -124,18 +124,15 @@ const pages = {
 
 
 Object.entries(Components).forEach(([ name, template ]) => {
-  console.log(name, template)
   Handlebars.registerPartial(name, template);
 });
 
-console.log(Components)
 function navigate(page: string) {
   //@ts-ignore
   const [ source, context ] = pages[page];
   const container = document.getElementById('app')!;
 
   const temlpatingFunction = Handlebars.compile(source);
-  console.log('html', temlpatingFunction(context))
   container.innerHTML = temlpatingFunction(context);
 }
 
