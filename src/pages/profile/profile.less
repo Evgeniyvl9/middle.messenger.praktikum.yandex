@@ -4,14 +4,14 @@
     width: 100vw;
     height: 100vh;
 	.profile-page__back { 
-        background: #FBFBFB;
+        background: var(--background-color-second);
         height: 100%;
         display:flex;
         justify-content: center;
         align-items: center;
         .back__link{
             display: block;
-            background-color: blue;
+            background-color: var(--background-color);
             width: 28px;
             height: 28px;
             border-radius:50%;
@@ -36,14 +36,14 @@
                 padding: 10px 0;
                 justify-content: space-between;
                 &+.r{
-                    border-top: 1px solid #EAEAEA;
+                    border-top: var(--border-base);
                 }
                 .lable { 
                     font-weight: 600;
                     font-size: 13px;
                     line-height: 13px;
                     letter-spacing: 0%;
-                    color: #1e1e1e;
+                    color: var(--text-color);
                 }
 
                 .value { 
@@ -52,7 +52,7 @@
                     line-height: 13px;
                     letter-spacing: 0%;
                     text-align: right;
-                    color: #999999;
+                    color: var(--text-color-second);
                     
                 }
             }
@@ -80,7 +80,7 @@
                 line-height: 16px;
                 letter-spacing: 0%;
                 text-align: center;
-                color: #1e1e1e;
+                color: var(--text-color);
 			}
 		}
 
@@ -110,10 +110,10 @@
 					.lable { 
 
 						a { 
-                            color: #3369F3;
+                            color: var(--text-color-blue);
                             text-decoration: none;
                             &.exit{
-                                color: #FF0000;
+                                color: var(--error-text-color);
                             }
 						}
 					}

@@ -26,8 +26,8 @@ const pages = {
      
     ] ,
     profIcon: profIcon,
-    showDialogAddUser:true,
-    showDialogRemoveUser:true,
+    showDialogAddUser:false,
+    showDialogRemoveUser:false,
   
   }],
   'chat-list_add_dialog'    : [Pages.ChatList, {

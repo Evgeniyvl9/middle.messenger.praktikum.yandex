@@ -2,8 +2,9 @@
 {{#if loadFileError}}
         {{#> Dialog title="Ошибка, попробуйте ещё раз" actionText="Поменять" class="error"}}
                 <form action="" class="loadFileForm">
-                        <label for="inputFile">Выбрать файл на компьютере</label>
-                        <input type="file" id="inputFile" name="inputFile">
+                        <label for="input-file">Выбрать файл на компьютере</label>
+                        {{> Input type="file" label="" name="input-file" id="input-file"}}
+                       
                 </form>
         {{/ Dialog }}
 {{else}}
@@ -14,8 +15,8 @@
         {{else }}
                 {{#> Dialog title="Загрузите файл" actionText="Поменять" error=""}}
                         <form action="" class="loadFileForm">
-                                <label for="inputFile">Выбрать файл на компьютере</label>
-                                <input type="file" id="inputFile" name="inputFile">
+                                <label for="input-file">Выбрать файл на компьютере</label>
+                                {{> Input type="file" label="" name="input-file" id="input-file"}}
                         </form>
                         {{#if loadFileEmpty}}
                                 <div class="error_empty">Нужно выбрать файл</div>
