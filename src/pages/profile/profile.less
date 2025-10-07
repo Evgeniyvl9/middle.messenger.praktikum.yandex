@@ -1,0 +1,128 @@
+.profile-page__container { 
+    display:grid;
+    grid-template-columns: 64px 1fr;
+    width: 100vw;
+    height: 100vh;
+	.profile-page__back { 
+        background: #FBFBFB;
+        height: 100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        .back__link{
+            display: block;
+            background-color: blue;
+            width: 28px;
+            height: 28px;
+            border-radius:50%;
+            background-image: url(/assets/back.png);
+        }
+		img { 
+
+		}
+	}
+
+	.profile-page__info__block {
+        display: flex        ;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
+        .info_table { 
+
+            .r { 
+                display: flex;
+                width: 100%;
+                padding: 10px 0;
+                justify-content: space-between;
+                &+.r{
+                    border-top: 1px solid #EAEAEA;
+                }
+                .lable { 
+                    font-weight: 600;
+                    font-size: 13px;
+                    line-height: 13px;
+                    letter-spacing: 0%;
+                    color: #1e1e1e;
+                }
+
+                .value { 
+                    font-weight: 500;
+                    font-size: 13px;
+                    line-height: 13px;
+                    letter-spacing: 0%;
+                    text-align: right;
+                    color: #999999;
+                    
+                }
+            }
+        } 
+
+		.info-block__top { 
+            display: flex            ;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 21px;
+			.info-block__avatar { 
+                width: 130px;
+                height: 130px;
+                border-radius: 50%;
+
+				img { 
+
+				}
+			}
+
+			.info-block__name { 
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 16px;
+                letter-spacing: 0%;
+                text-align: center;
+                color: #1e1e1e;
+			}
+		}
+
+		.info-block__middle { 
+            width: 500px;
+			.info_table { 
+
+				.r { 
+
+					.lable { 
+
+					}
+
+					.value { 
+
+					}
+				}
+			}
+		}
+
+		.info-block__bottom { 
+            width: 500px;
+			.info_table { 
+
+				.r { 
+
+					.lable { 
+
+						a { 
+                            color: #3369F3;
+                            text-decoration: none;
+                            &.exit{
+                                color: #FF0000;
+                            }
+						}
+					}
+
+					.value { 
+
+					}
+				}
+			}
+		}
+	}
+}
