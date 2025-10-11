@@ -1,0 +1,28 @@
+
+{{#if loadFileError}}
+        {{#> Dialog title="Ошибка, попробуйте ещё раз" actionText="Поменять" class="error"}}
+                <form action="" class="loadFileForm">
+                        <label for="input-file">Выбрать файл на компьютере</label>
+                        {{> Input type="file" label="" name="input-file" id="input-file"}}
+                       
+                </form>
+        {{/ Dialog }}
+{{else}}
+        {{#if loadFileName}}
+                {{#> Dialog title="Файл загружен" actionText="Поменять" error=""}}
+                        <div class="file_name">pic.jpg</div>
+                {{/ Dialog }}
+        {{else }}
+                {{#> Dialog title="Загрузите файл" actionText="Поменять" error=""}}
+                        <form action="" class="loadFileForm">
+                                <label for="input-file">Выбрать файл на компьютере</label>
+                                {{> Input type="file" label="" name="input-file" id="input-file"}}
+                        </form>
+                        {{#if loadFileEmpty}}
+                                <div class="error_empty">Нужно выбрать файл</div>
+                        {{/if }}
+                {{/ Dialog }}
+        {{/if }}
+
+{{/if }}
+

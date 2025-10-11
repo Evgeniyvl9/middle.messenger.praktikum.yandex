@@ -1,0 +1,25 @@
+.input-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    label{
+        font-weight: 500;
+        font-size: 9px;
+        line-height: 9px;
+        letter-spacing: 0%;
+        color: var(--text-color-second);
+    }
+    input{
+        &[type='text'],
+        &[type="password"],
+        &:focus-visible
+        {
+            outline: none;
+          width: 100%;
+          border: none;  
+          border-bottom: 1px solid var(--background-color);
+          font-size: 13px;
+          font-weight: 500;
+        }
+    }
+}
