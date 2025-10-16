@@ -1,5 +1,5 @@
 import template from './login.hbs?raw'
-import Block    from '../../core/block'
+import Block    from '/src/core/block'
 import Button   from  '/src/components/button/button'
 import Input    from  '/src/components/input/input'
 export default class Login extends Block{

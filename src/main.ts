@@ -2,14 +2,55 @@ import './assets/normalize.css'
 import './assets/style.less'
 import Handlebars from 'handlebars';
 //import * as modules from './modules'
+import Dialog from  '/src/components/dialog/dialog'
+import Button from  '/src/components/button/button'
+import Input from  '/src/components/input/input'
 import * as Pages  from './pages'
 import * as Components from './components'
-
 import renderDOM from "./core/renderDom";
-
 import avatar from './assets/avatar.jpg'
 import profIcon from './assets/profIcon.jpg'
 import backIcon from './assets/back.png'
+
+
+function inputMod(props){
+  //return  new Input(props).render()
+
+  return  Handlebars.compile(
+      new Input(props).render()
+    )(
+      props
+    )
+} 
+
+/*
+  Handlebars.compile(
+      inputMod({
+        type : "text" ,
+        label: "Логин",
+        name : "login"
+      })
+    )(
+        {
+        type : "text" ,
+        label: "Логин",
+        name : "login"
+      }
+    )
+*/
+
+// function inputMod(props){
+//   // function inputMod2(props){
+//   //   return  new Input(props).render()
+//   // } 
+//   let r = (props)=>{ new Input(props).render()}
+
+//   console.log(r)
+//   return Handlebars.compile(r)(props)
+// }
+
+
+
 
 
 
@@ -18,9 +59,18 @@ const pages = {
   //nav: [Pages.NavigatePage],
 
   
-   'login': [ Pages.Login ],
-   'registration' : [Pages.Registration],
-
+  'login': [ Pages.Login ],
+  'registration' : [Pages.Registration],
+  'chat-list'    : [Pages.ChatListPage,{
+        chats:[
+          {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'2' },
+          {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'3' }, 
+          {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet  Aut aperiam magnam ', mess_time:'10:49',mess_count:'' },
+        
+        ] ,
+        showDialogAddUser:false,
+        showDialogRemoveUser:false,
+  }],
 
   // 'chat-list'    : [Pages.ChatList, {
   //   chats:[
@@ -34,27 +84,60 @@ const pages = {
   //   showDialogRemoveUser:false,
   
   // }],
-  // 'chat-list_add_dialog'    : [Pages.ChatList, {
-  //   chats:[
-  //     {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'2' },
-  //     {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'3' }, 
-  //     {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet  Aut aperiam magnam ', mess_time:'10:49',mess_count:'' },
-     
-  //   ] ,
-  //   profIcon: profIcon,
-  //   showDialogAddUser:true,
-  // }],
-  // 'chat-list_remove_dialog'    : [Pages.ChatList, {
-  //   chats:[
-  //     {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'2' },
-  //     {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'3' }, 
-  //     {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet  Aut aperiam magnam ', mess_time:'10:49',mess_count:'' },
-     
-  //   ] ,
-  //   profIcon: profIcon,
-  //   showDialogRemoveUser:true,
-  // }],
-
+  'chat-list_add_dialog': [Pages.ChatListPage,
+    {
+      chats:[
+        {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'2' },
+        {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'3' }, 
+        {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet  Aut aperiam magnam ', mess_time:'10:49',mess_count:'' },
+      ] ,
+      DialogAddUser: new Dialog({
+        title:'Добавить пользователя',
+        partialBlock:'<div>'+ inputMod(      
+          {
+            type : "text" ,
+            label: "Логин",
+            name : "login"
+          }
+        )+'</div>',
+        button: new Button({
+            className: 'blue',
+            type:'submit',
+            text:'Добавить',
+        })
+      }),
+      showDialogAddUser:true,
+      showDialogRemoveUser:false,
+    }
+  ],
+  'chat-list_remove_dialog'    : [Pages.ChatListPage,     
+    {
+      chats:[
+        {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'2' },
+        {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'3' }, 
+        {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet  Aut aperiam magnam ', mess_time:'10:49',mess_count:'' },
+      ] ,
+      DialogRemoveUser: new Dialog({
+        title:'Удалить пользователя',
+        actionText:"Удалить",
+        partialBlock:'<div>'+ inputMod(      
+          {
+            type : "text" ,
+            label: "Логин",
+            name : "login"
+          }
+        )+'</div>',
+        button: new Button({
+            className: 'blue',
+            type:'submit',
+            text:'Добавить',
+        })
+      }),
+      showDialogAddUser:false,
+      showDialogRemoveUser:true,
+    }
+  ],
+  'profile': [Pages.ProfilePage],
   // 'profile': [Pages.ProfilePage,{
   //   profileInfo:{
   //     avatar:avatar,
@@ -136,7 +219,7 @@ function navigate(page: string) {
   //@ts-ignore
   const [source, context] = pages[page];
   if (typeof source === "function") {
-    renderDOM(new source({}));
+    renderDOM(new source(context));
     return;
   }
 
