@@ -131,6 +131,22 @@ export default class ChatListPage extends Block{
                             showDialogRemoveUser:false,
                         })
                     },
+                }),
+                NewMessage: new Input({
+                        type : "text" ,
+                        label: "",
+                        name : "message"
+                    }),
+                NewMessageSubmitBut: new Button({
+                    className: '',
+                    type:'submit',
+                    text:'Send',
+                    onClick:()=>{
+                        this.setProps({
+                            showDialogAddUser:false,
+                            showDialogRemoveUser:false,
+                        })
+                    },
                 })
             }),
         })
@@ -199,7 +215,10 @@ export default class ChatListPage extends Block{
                                 {{/if}}
                             {{/each}}
                         </div>
-                        <div class="chat-detail__mess">chat-detail__mess</div>
+                        <div class="chat-detail__mess">
+                            <div class="files_add"></div>
+                            <form class="new_message_form">{{{NewMessage}}}</form>
+                        </div>
                     {{else}}
                          Выберите чат чтобы отправить сообщение
                     {{/if}}
