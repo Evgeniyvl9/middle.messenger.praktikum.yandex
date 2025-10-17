@@ -48,16 +48,16 @@ export default class Block {
 
   _createResources() {
     const { tagName, props } = this._meta;
-   // this._element = this._createDocumentElement(tagName);
-    this._element = document.createDocumentFragment()
+    this._element = this._createDocumentElement(tagName);
+    //this._element = document.createDocumentFragment()
     if (typeof props.className === "string") {
       const classes = props.className.split(" ");
-      //this._element.classList.add(...classes);
+      this._element.classList.add(...classes);
     }
 
     if (typeof props.attrs === "object") {
       Object.entries(props.attrs).forEach(([attrName, attrValue]) => {
-        //this._element.setAttribute(attrName, attrValue);
+        this._element.setAttribute(attrName, attrValue);
       });
     }
   }

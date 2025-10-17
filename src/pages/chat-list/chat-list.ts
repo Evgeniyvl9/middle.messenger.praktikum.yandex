@@ -8,7 +8,24 @@ export default class ChatListPage extends Block{
         super('div',{
             ...props,
             chatSelect:false,
-
+            attrs:{
+                
+            },
+            events:{
+                click:(e) => {
+                    console.log(e)
+                    if (e.target.classList.contains('chat-list__element') || 
+                        e.target.parentElement.classList.contains('chat-list__element')) {
+                        console.log('Клик на элементе чата');
+                    } else {
+                        console.log('Клик в пустое место');
+                    }
+                }
+            },
+            onClick: (e) => {
+                console.log('test')
+            }
+            //onClick="this.setProps({chatSelect:true})
 
         })
     }
