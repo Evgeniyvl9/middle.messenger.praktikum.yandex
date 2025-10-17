@@ -1,32 +1,138 @@
 import Block from '/src/core/block.ts'
+import Handlebars from 'handlebars';
 //import Dialog from  '/src/components/dialog/dialog'
+import Dialog from  '/src/components/dialog/dialog'
+import Button from  '/src/components/button/button'
+import Input from  '/src/components/input/input'
+
+import DialogUserActions from  '/src/components/dialog/dialogUserActions/dialogUserActions'
+
 import avatar   from '/src/assets/avatar.jpg'
 import profIcon from '/src/assets/profIcon.jpg'
+
+function inputMod(props){
+  return  Handlebars.compile(
+      new Input(props).render()
+    )(
+      props
+    )
+} 
 
 export default class ChatListPage extends Block{
     constructor(props:any){
         super('div',{
             ...props,
-            chatSelect:false,
+            chatSelect:{
+                selectedStatus:false,
+                chatUser:'Andrey',
+                avatar,
+                messageList:[
+                    {
+                        userIsSender:false,
+                        mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam',
+                        mess_time:'10:49'
+                    },
+                    {
+                        userIsSender:false,
+                        mess:'Lorem ipsum, dolor ?  ',
+                        mess_time:'10:49'
+                    },
+                    {
+                        userIsSender:true,
+                        mess:'Lorem ipsum, dolor sit amet consectetur adipisicing  ',
+                        mess_time:'10:49'
+                    }
+                ]
+
+            },
             attrs:{
                 
             },
             events:{
                 click:(e) => {
-                    console.log(e)
-                    if (e.target.classList.contains('chat-list__element') || 
-                        e.target.parentElement.classList.contains('chat-list__element')) {
-                        console.log('Клик на элементе чата');
-                    } else {
-                        console.log('Клик в пустое место');
+                    //console.log(e)
+                    if (e.target.closest('.chat-list__element')) {
+                        let k =  this.props.chatSelect 
+                        k.selectedStatus = true
+                        this.setProps({
+                            chatSelect: k
+                        })
+                    } 
+                    else if (e.target.closest('.drop_menu_show-button')) {
+                        //let k =  !this.props.showDialogAddUser 
+                        //this.setProps({
+                        //    showDialogAddUser: k
+                        //})
                     }
                 }
             },
-            onClick: (e) => {
-                console.log('test')
-            }
-            //onClick="this.setProps({chatSelect:true})
+            UserActionsShow:false,
 
+            UserActionsShowBut:  new Button({
+                    className: 'drop_menu_show-button',
+                    type:'button',
+                    text:'<ul><li></li><li></li><li></li></ul>',
+                    onClick:()=>{
+                        this.setProps({
+                            UserActionsShow:true,
+                        })
+                    },
+                }),
+            DialogUserActions:new DialogUserActions({
+                AddUserDialogRun: new Button({
+                    className: 'drop_menu__element',
+                    type:'button',
+                    text:'Добавить пользователя',
+                    onClick:()=>{
+                        this.setProps({
+                            UserActionsShow:false,
+                            showDialogAddUser:true,
+                            showDialogRemoveUser:false,
+                        })
+                    },
+                }),
+                RemoveUserDialogRun: new Button({
+                    className: 'drop_menu__element',
+                    type:'button',
+                    text:'Удалить пользователя',
+                    onClick:()=>{
+                        this.setProps({
+                            UserActionsShow:false,
+                            showDialogAddUser:false,
+                            showDialogRemoveUser:true,
+                        })
+                    },
+                }), 
+
+            }) ,
+ 
+            DialogAddUser: new Dialog({
+                title:'Добавить пользователя',
+                partialBlock:'<div>'+ inputMod(      
+                    {
+                        type : "text" ,
+                        label: "Логин",
+                        name : "login"
+                    }
+                )+'</div>',
+                onClose:()=>{
+                    this.setProps({
+                        showDialogAddUser:false,
+                        showDialogRemoveUser:false,
+                    })
+                },
+                button: new Button({
+                    className: 'blue',
+                    type:'submit',
+                    text:'Добавить',
+                    onClick:()=>{
+                        this.setProps({
+                            showDialogAddUser:false,
+                            showDialogRemoveUser:false,
+                        })
+                    },
+                })
+            }),
         })
     }
     render(){
@@ -61,23 +167,45 @@ export default class ChatListPage extends Block{
                     </div>
                 </div>
                 <div class="chat-detail">
-                    {{#if chatSelect}}
-                        <div class="chat-detail__info"></div>
+                    {{#if chatSelect.selectedStatus}}
+                        <div class="chat-detail__info">
+                            <div class="user_info">
+                                <div class="avatar">
+                                    <img src="{{chatSelect.avatar}}" alt="" class="element__avatar">
+                                </div>
+                                <div class="user_name">
+                                   {{chatSelect.chatUser}}
+                                </div>                                
+                            </div>
+                            <div class="drop_menu_wrap">
+                                {{{UserActionsShowBut}}}
+                                {{#if UserActionsShow}}
+                                    {{{DialogUserActions}}}
+                                {{/if}}
+                             </div>   
+                        </div>
                         <div class="chat-detail__list">
-                            {{#each chatDetail.messages}}
-                                <div>{{text}}</div>
+                            {{#each chatSelect.messageList}}
+                                {{#if userIsSender}}
+                                    <div class="chat_mess second_chat_mess">
+                                       {{mess}}
+                                       <time>{{mess_time}}</time>
+                                    </div>
+                                {{else}}
+                                    <div class="chat_mess primory_chat_mess"> 
+                                        {{mess}}
+                                        <time>{{mess_time}}</time>
+                                    </div>
+                                {{/if}}
                             {{/each}}
                         </div>
                         <div class="chat-detail__mess">chat-detail__mess</div>
                     {{else}}
                          Выберите чат чтобы отправить сообщение
                     {{/if}}
-
                 </div>
             </div>
-            {{showDialogAddUser}}
             {{#if showDialogAddUser}}
-                    123
                 {{{ DialogAddUser }}}
             {{/if}}
 

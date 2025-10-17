@@ -1,6 +1,12 @@
 :root{
     --chat-list-border:1px solid #EAEAEA;
     --chat-list-bg:#FBFBFB;
+    --secont-chat-bg:#E4EDFD;
+    --primory-chat-bg:var(--chat-list-bg);
+    --text-color-second:#999999;
+    --text-color:#1E1E1E;
+    --background-color-light: #ffffff;
+    --box-shadow: 0px 0px 6px 0px #00000024;
 }
 .chat-list__container { 
     display: grid;
@@ -135,8 +141,120 @@
 	.chat-detail { 
         height: 100%;
         display: flex;
-        justify-content: center;
-        align-items: center;
         color: var(--text-color-second);
+        padding: 0 20px;
+        flex-direction: column;
+        justify-content: space-between;
+        .chat-detail__info {
+            height: 54px;
+            border-bottom: var(--chat-list-border) ;
+            display: flex;
+            justify-content: space-between;
+                align-items: center;
+            .user_info { 
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                .avatar { 
+                    border-radius: 50%;
+                    overflow: hidden;
+                    .element__avatar { 
+                        width: 37px;
+                        height: 37px;
+                    }
+                }
+                .user_name { 
+                    font-size: 13px;
+                    font-weight: 600;
+                    color: var( --text-color);
+                }
+            }
+
+            .drop_menu_wrap { 
+                position: relative;
+                .drop_menu_show-button{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    background-color:#efefef;
+                    color: #1E1E1E;
+                    align-content: center;
+                    position: relative;
+                    ul{
+                        margin: 0 28px 0 0;
+                        padding: 0;
+                        font-size: 13px;
+                        line-height: 0.6;
+                        color: #1e1e1e80;
+                        width: 0;
+                        position: relative;
+                        left: 28px;
+                        li{
+
+                        }
+                    }
+                }
+                .drop-menu { 
+                    position: absolute;
+                    right: 0;
+                    top: 40px;
+                    z-index: 102;
+                    width: max-content;
+                    background-color: var(--background-color-light);
+                    box-shadow: var(--box-shadow);
+                    border-radius: 12px;
+                    padding: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    .drop_menu__element { 
+                        cursor: pointer;
+                        padding: 3px 0;
+                        font-weight: 500;
+                        font-size: 14px;
+                        color: var(--text-color);
+                    }
+                }
+            }
+
+        }
+        .chat-detail__list { 
+            display: flex;
+            flex-direction: column;
+            height: -webkit-fill-available;
+            justify-content: flex-end;
+            padding-bottom: 40px;
+            .chat_mess {
+                padding: 11px;
+                font-size: 12px;
+                font-weight: 500;
+                border-radius: 7px;
+                width: max-content;
+                margin-top: 20px;
+                align-self: flex-start;
+                color: var(--text-color);
+                &.primory_chat_mess { 
+                    background-color: var(--primory-chat-bg);
+
+                    time { 
+
+                    }
+                }
+
+                &.second_chat_mess { 
+                    align-self: flex-end;
+                    background-color: var(--secont-chat-bg);
+                    time { 
+
+                    }
+                }
+            }
+
+        }
+        .chat-detail__mess {
+            height: min-content;
+            border-top: var(--chat-list-border);
+                min-height: 58px;
+        }
 	}
 }

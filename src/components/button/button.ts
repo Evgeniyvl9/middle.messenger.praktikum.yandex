@@ -8,6 +8,12 @@ export default class Button extends Block {
             className: props.className,
             type:props.type,
             text:props.text,
+            events: {
+                click: props.onClick,
+                blur:props.onBlur,
+                change: props.onChange,
+
+            },
             //event:props.onClick
         })
     }

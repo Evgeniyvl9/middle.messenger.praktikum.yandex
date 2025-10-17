@@ -1,6 +1,7 @@
 export { Input } from './input'
 export { Button } from './button'
 export { Dialog } from './dialog'
+export { DialogUserActions } from './dialog/dialogUserActions'
 export {DialogAddUser} from './dialogAddUser'
 export {DialogRemoveUser} from './dialogRemoveUser'
 export {DialogLoadFile}   from './dialogLoadFile'

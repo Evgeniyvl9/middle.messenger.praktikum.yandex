@@ -3,8 +3,13 @@ import template from './dialog.hbs?raw'
 export default class Dialog extends Block {
     constructor(props:object){
         super('div',{
-            ...props
+            ...props,            
+            events: {
+                close: props.onClose,
+                blur:props.onBlur,
+                change: props.onChange,
 
+            },
         })
     }
     render(){
