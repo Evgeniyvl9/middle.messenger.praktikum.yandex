@@ -23,42 +23,11 @@ function inputMod(props){
     )
 } 
 
-/*
-  Handlebars.compile(
-      inputMod({
-        type : "text" ,
-        label: "Логин",
-        name : "login"
-      })
-    )(
-        {
-        type : "text" ,
-        label: "Логин",
-        name : "login"
-      }
-    )
-*/
-
-// function inputMod(props){
-//   // function inputMod2(props){
-//   //   return  new Input(props).render()
-//   // } 
-//   let r = (props)=>{ new Input(props).render()}
-
-//   console.log(r)
-//   return Handlebars.compile(r)(props)
-// }
-
-
 
 
 
 
 const pages = {
-  //list: [Pages.ListPage],
-  //nav: [Pages.NavigatePage],
-
-  
   'login': [ Pages.Login ],
   'registration' : [Pages.Registration],
   'chat-list'    : [Pages.ChatListPage,{
@@ -72,71 +41,6 @@ const pages = {
         showDialogRemoveUser:false,
   }],
 
-  // 'chat-list'    : [Pages.ChatList, {
-  //   chats:[
-  //     {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'2' },
-  //     {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'3' }, 
-  //     {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet  Aut aperiam magnam ', mess_time:'10:49',mess_count:'' },
-     
-  //   ] ,
-  //   profIcon: profIcon,
-  //   showDialogAddUser:false,
-  //   showDialogRemoveUser:false,
-  
-  // }],
-  'chat-list_add_dialog': [Pages.ChatListPage,
-    {
-      chats:[
-        {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'2' },
-        {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'3' }, 
-        {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet  Aut aperiam magnam ', mess_time:'10:49',mess_count:'' },
-      ] ,
-      DialogAddUser: new Dialog({
-        title:'Добавить пользователя',
-        partialBlock:'<div>'+ inputMod(      
-          {
-            type : "text" ,
-            label: "Логин",
-            name : "login"
-          }
-        )+'</div>',
-        button: new Button({
-            className: 'blue',
-            type:'submit',
-            text:'Добавить',
-        })
-      }),
-      showDialogAddUser:true,
-      showDialogRemoveUser:false,
-    }
-  ],
-  'chat-list_remove_dialog'    : [Pages.ChatListPage,     
-    {
-      chats:[
-        {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'2' },
-        {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'3' }, 
-        {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet  Aut aperiam magnam ', mess_time:'10:49',mess_count:'' },
-      ] ,
-      DialogRemoveUser: new Dialog({
-        title:'Удалить пользователя',
-        actionText:"Удалить",
-        partialBlock:'<div>'+ inputMod(      
-          {
-            type : "text" ,
-            label: "Логин",
-            name : "login"
-          }
-        )+'</div>',
-        button: new Button({
-            className: 'blue',
-            type:'submit',
-            text:'Добавить',
-        })
-      }),
-      showDialogAddUser:false,
-      showDialogRemoveUser:true,
-    }
-  ],
   'profile': [Pages.ProfilePage],
   // 'profile': [Pages.ProfilePage,{
   //   profileInfo:{

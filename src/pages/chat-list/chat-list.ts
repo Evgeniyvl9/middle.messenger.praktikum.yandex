@@ -5,6 +5,7 @@ import Dialog from  '/src/components/dialog/dialog'
 import Button from  '/src/components/button/button'
 import Input from  '/src/components/input/input'
 
+import DialogMessageFiles from  '/src/components/dialog/dialogMessageFiles/dialogMessageFiles'
 import DialogUserActions from  '/src/components/dialog/dialogUserActions/dialogUserActions'
 
 import avatar   from '/src/assets/avatar.jpg'
@@ -18,10 +19,14 @@ function inputMod(props){
     )
 } 
 
+
+
 export default class ChatListPage extends Block{
     constructor(props:any){
         super('div',{
             ...props,
+            userActionsShow:false,
+            showFileAddDialog:false,
             chatSelect:{
                 selectedStatus:false,
                 chatUser:'Andrey',
@@ -46,7 +51,6 @@ export default class ChatListPage extends Block{
 
             },
             attrs:{
-                
             },
             events:{
                 click:(e) => {
@@ -66,26 +70,24 @@ export default class ChatListPage extends Block{
                     }
                 }
             },
-            UserActionsShow:false,
-
             UserActionsShowBut:  new Button({
-                    className: 'drop_menu_show-button',
-                    type:'button',
-                    text:'<ul><li></li><li></li><li></li></ul>',
-                    onClick:()=>{
-                        this.setProps({
-                            UserActionsShow:true,
-                        })
-                    },
-                }),
+                className: 'drop_menu_show-button',
+                type:'button',
+                onClick:(e)=>{
+                    let nV = !this.props.userActionsShow
+                    this.setProps({
+                        userActionsShow:nV,
+                    })
+                },
+            }),
             DialogUserActions:new DialogUserActions({
-                AddUserDialogRun: new Button({
+                AddUserDialogRun:    new Button({
                     className: 'drop_menu__element',
                     type:'button',
                     text:'Добавить пользователя',
                     onClick:()=>{
                         this.setProps({
-                            UserActionsShow:false,
+                            userActionsShow:false,
                             showDialogAddUser:true,
                             showDialogRemoveUser:false,
                         })
@@ -97,15 +99,13 @@ export default class ChatListPage extends Block{
                     text:'Удалить пользователя',
                     onClick:()=>{
                         this.setProps({
-                            UserActionsShow:false,
+                            userActionsShow:false,
                             showDialogAddUser:false,
                             showDialogRemoveUser:true,
                         })
                     },
                 }), 
-
             }) ,
- 
             DialogAddUser: new Dialog({
                 title:'Добавить пользователя',
                 partialBlock:'<div>'+ inputMod(      
@@ -132,23 +132,50 @@ export default class ChatListPage extends Block{
                         })
                     },
                 }),
-                NewMessage: new Input({
-                        type : "text" ,
-                        label: "",
-                        name : "message"
-                    }),
-                NewMessageSubmitBut: new Button({
-                    className: '',
-                    type:'submit',
-                    text:'Send',
-                    onClick:()=>{
-                        this.setProps({
-                            showDialogAddUser:false,
-                            showDialogRemoveUser:false,
-                        })
-                    },
-                })
+
             }),
+            NewMessage: new Input({
+                type : "text" ,
+                label: "",
+                name : "message"
+            }),
+            NewMessageSubmitBut: new Button({
+                className: 'send_message_button',
+                type:'submit',
+                onClick:()=>{
+                    this.setProps({
+                        showDialogAddUser:false,
+                        showDialogRemoveUser:false,
+                    })
+                },
+            }),
+            FilesAdd: new Button({
+                className:'file_add_button',
+                type:'button',
+                
+                onClick:()=>{
+                    let nV = !this.props.showFileAddDialog
+                    this.setProps({
+                        showFileAddDialog:nV
+                    })
+                }
+            }),
+            FileAddDialog:new DialogMessageFiles({
+                addImg:new Input({
+                    type:'file',
+                    label:'Фото или Видео',
+                    name:'newMessFileImg',
+                    className:'newMessFileImg',
+                    access:'image/png, image/jpeg'
+                }),
+                addDoc:new Input({
+                    type:'file',
+                    label:'Файл',
+                    name:'newMessFileDoc',
+                    className:'newMessFileDoc',
+                    access:' .doc,.pdf'
+                })
+            })
         })
     }
     render(){
@@ -195,7 +222,7 @@ export default class ChatListPage extends Block{
                             </div>
                             <div class="drop_menu_wrap">
                                 {{{UserActionsShowBut}}}
-                                {{#if UserActionsShow}}
+                                {{#if userActionsShow}}
                                     {{{DialogUserActions}}}
                                 {{/if}}
                              </div>   
@@ -216,8 +243,11 @@ export default class ChatListPage extends Block{
                             {{/each}}
                         </div>
                         <div class="chat-detail__mess">
-                            <div class="files_add"></div>
-                            <form class="new_message_form">{{{NewMessage}}}</form>
+                            {{{FilesAdd}}}
+                            <form class="new_message_form">
+                                {{{NewMessage}}}
+                                {{{NewMessageSubmitBut}}}
+                            </form>
                         </div>
                     {{else}}
                          Выберите чат чтобы отправить сообщение
@@ -231,8 +261,10 @@ export default class ChatListPage extends Block{
             {{#if showDialogRemoveUser}}
                 {{{DialogRemoveUser}}}
             {{/if}}
-
-
+            
+            {{#if showFileAddDialog}}
+                {{{FileAddDialog}}}
+            {{/if}}
         `
     }
 }

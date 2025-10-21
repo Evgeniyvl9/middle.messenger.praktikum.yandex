@@ -9,7 +9,9 @@ export default class DialogUserActions extends Dialog {
     }
     render(){
         return `
+       
          <div class="drop-menu chat-list__action_drop-menu">
+            {{position}}
             {{{AddUserDialogRun}}}
             {{{RemoveUserDialogRun}}}
         </div>
