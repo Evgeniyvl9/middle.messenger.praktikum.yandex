@@ -17,6 +17,7 @@ export default class ProfilePage extends Block {
 
             },
             showErrorMes: false,
+            newPassError:false,
             ChangeValue__first_name: new InputWithoutLabel({
                 attrs:{
                     type: 'text',
@@ -299,36 +300,119 @@ export default class ProfilePage extends Block {
                 },
 
             }),
+            passChangePage:false,
+            passChangeSwichBut:new Button({
+                className: 'editSwichBut',
+                type:'button',
+                text:'Изменить пароль',
+                onClick:()=>{
+
+                   
+                    
+                    this.setProps({
+                        passChangePage:true,
+                    })
+                },
+
+            }),
             saveBut:new Button({
                 className: 'saveBut blue',
                 type:'button',
                 text:'Сохранить',
                 onClick:()=>{
-                    console.log(this.props.errors)
-                    let hasErrors = false
-                    Object.entries(this.props.errors).forEach((el)=>{
-                            //console.log(el)
-                            if(!el[1]){
-                                hasErrors = true
-                                return
-                                // this.setProps({
-                                //     showErrorMes:true
-
-                                // })
-                            }
-                        })
-                    console.log(hasErrors)
-                    if(!hasErrors){
-                        this.setProps({
-                            showErrorMes:false,
-                            editModeDisable:true,
-                        })
+                    if(this.props.passChangePage){
+                        if(this.props.newPass != this.props.newPassRepeat ){
+                            this.setProps({
+                                newPassError:true,
+                            })
+                        }
+                        else{
+                            this.setProps({
+                                newPassError:false,
+                                passChangePage:false
+                            })    
+                        }
                     }
                     else{
-                         this.setProps({
-                            showErrorMes:true,
-                        })                       
+                        let hasErrors = false
+                        Object.entries(this.props.errors).forEach((el)=>{
+                                if(!el[1]){
+                                    hasErrors = true
+                                    return
+                                  }
+                            })
+                        console.log(hasErrors)
+                        if(!hasErrors){
+                            this.setProps({
+                                showErrorMes:false,
+                                editModeDisable:true,
+                            })
+                        }
+                        else{
+                            this.setProps({
+                                showErrorMes:true,
+                            })                       
+                        }
                     }
+                    
+                },
+            }),
+
+
+            OldPassInput:new InputWithoutLabel({
+                attrs:{
+                    type: 'password',
+                    name: 'oldpass',
+                    //value:'pseudiname',
+                },
+                onChange:(e) => {
+                    let nValue = e.target.value
+                    this.children.OldPassInput.setProps({
+                        value:nValue,
+                        error:inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/)
+                    });
+
+                    this.setProps({
+                        errors: {
+                            ...this.props.errors,
+                            display_name: inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/)
+                        }
+                    })
+                },
+            }),
+            NewPassInput:new InputWithoutLabel({
+                attrs:{
+                    type: 'password',
+                    name: 'password',
+                },
+                onChange:(e) => {
+                    let nValue = e.target.value
+                    // this.children.NewPassInput.setProps({
+                    //     value:nValue,
+                    //     error:inputValidator(e,/^(?=.*[A-Z])(?=.*\d).{8,40}$/)
+                    // });
+
+                    this.setProps({
+                        newPass: nValue
+                    })
+
+                },
+            }),
+            NewPassInputRepeat:new InputWithoutLabel({
+                attrs:{
+                    type: 'password',
+                    name: 'password_repeat',
+                },
+                onChange:(e) => {
+                     let nValue = e.target.value
+                    // this.children.NewPassInputRepeat.setProps({
+                    //     value:nValue,
+                    //     error:inputValidator(e,/^(?=.*[A-Z])(?=.*\d).{8,40}$/)
+                    // });
+
+                    this.setProps({
+                        newPassRepeat: nValue
+                    })
                 },
             }),
             profIcon,
@@ -338,12 +422,55 @@ export default class ProfilePage extends Block {
     render(){
 
         return `
+
         <div class="profile-page__container">
             <div class="profile-page__back">
                 <a href="" class="back__link">
                     <img src="{{ backIcon }}" alt="">
                 </a>
             </div>
+            {{#if passChangePage}}
+<form class="profile-page__info__block">
+                <div class="info-block__top">
+                    <div class="info-block__avatar">
+                        <img src="{{ profileInfo.avatar }}" alt="">
+                    
+                    </div>
+                    <div class="info-block__name">
+                        {{ profileInfo.visibleParams.name.value }}
+                    </div>
+                </div>
+                <div class="info-block__middle">
+                    <div class="info_table">
+                        <div class="r">
+                            <div class="lable">Старый пароль</div>
+                            <div class="value">
+                                {{{OldPassInput}}}
+                            </div>
+                        </div>
+                        <div class="r">
+                            <div class="lable">Новый пароль</div>
+                            <div class="value">
+                                 {{{NewPassInput}}}
+                            </div>
+                        </div>
+                        <div class="r">
+                            <div class="lable">Повторите новый пароль</div>
+                            <div class="value">
+                                 {{{NewPassInputRepeat}}}
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+
+                    {{#if newPassError}}
+                        Ошибка в данных
+                    {{/if}}
+                    {{{saveBut}}}
+
+            </form>
+                            
+            {{else}}    
             <form class="profile-page__info__block">
                 <div class="info-block__top">
                     <div class="info-block__avatar">
@@ -430,7 +557,7 @@ export default class ProfilePage extends Block {
                                     <div class="value"></div>
                                 </div>
                                 <div class="r">
-                                    <div class="lable"><a href="">Изменить пароль</a></div>
+                                    <div class="lable"> {{{passChangeSwichBut}}}</div>
                                     <div class="value"></div>
                                 </div>
                                 <div class="r">
@@ -447,12 +574,15 @@ export default class ProfilePage extends Block {
                     {{{saveBut}}}
                 {{/if}}
             </form>
+            {{/if}}  
         </div>
+
+
         {{#if showDialogLoadFile}}
         {{>DialogLoadFile}}
         {{/if}}
         
-        
+     
         `
     }
 
