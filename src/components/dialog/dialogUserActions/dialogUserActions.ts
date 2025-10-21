@@ -19,3 +19,4 @@ export default class DialogUserActions extends Dialog {
 
     }
 }
+
