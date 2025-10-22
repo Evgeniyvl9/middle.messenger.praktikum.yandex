@@ -15,6 +15,7 @@
       ]
     },
     {
+      "files": ["**/*.js", "vite.config.js", "server.js"],
       "parser": "@babel/eslint-parser",
       "parserOptions": {
         "requireConfigFile": false,
