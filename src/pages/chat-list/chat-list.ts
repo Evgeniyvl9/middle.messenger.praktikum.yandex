@@ -1,13 +1,13 @@
-import Block from '/src/core/block.ts'
-import Button from  '/src/components/button/button'
-import Input from  '/src/components/input/input'
-import InputWithoutLabel from '/src/components/input/inputWithoutLabel/inputWithoutLabel';
-import DialogMessageFiles from  '/src/components/dialog/dialogMessageFiles/dialogMessageFiles'
-import DialogUserActions from  '/src/components/dialog/dialogUserActions/dialogUserActions'
-import DialogRemoveUser from '/src/components/dialogRemoveUser/dialogRemoveUser'
-import DialogAddUser from '/src/components/dialogAddUser/dialogAddUser';
-import isEmpty from '/src/core/functions.ts'
-import avatar   from '/src/assets/avatar.jpg'
+import Block from '../../core/block.ts'
+import Button from  '../../components/button/button'
+import Input from  '../../components/input/input'
+import InputWithoutLabel from '../../components/input/inputWithoutLabel/inputWithoutLabel';
+import DialogMessageFiles from  '../../components/dialog/dialogMessageFiles/dialogMessageFiles'
+import DialogUserActions from  '../../components/dialog/dialogUserActions/dialogUserActions'
+import DialogRemoveUser from '../../components/dialogRemoveUser/dialogRemoveUser'
+import DialogAddUser from '../../components/dialogAddUser/dialogAddUser';
+import isEmpty from '../../core/functions.ts'
+import avatar   from '../../assets/avatar.jpg'
 
 // function inputMod(props){
 //   return  Handlebars.compile(
@@ -16,16 +16,40 @@ import avatar   from '/src/assets/avatar.jpg'
 //       props
 //     )
 // } 
-
-
+interface ChatListPageProps {
+    chatSelect: {
+        selectedStatus:boolean
+    };
+    dialogAddUserParams: {
+        addUserLogin: string;
+    };
+    newMessageContent:{
+        text:string
+    },
+    children:{};
+    userActionsShow:boolean;
+    showFileAddDialog:boolean;
+}
+interface PageChildren {
+  DialogRemoveUser: {
+    children: {
+        LoginInput:object
+    };
+  };
+}
 export default class ChatListPage extends Block{
-    public props: unknown;
-    constructor(props: unknown){
+    public props: ChatListPageProps;
+    public children: unknown; // или конкретный тип
+
+    //public setProps: (nextProps:unknown)=>void;
+
+    constructor(props: ChatListPageProps){
+       // this.props = props
         super('div',{
             ...props,
             userActionsShow:false,
             showFileAddDialog:false,
-
+            //this.children = {}; 
             chatSelect:{
                 selectedStatus:false,
                 chatUser:'Andrey',
@@ -52,16 +76,15 @@ export default class ChatListPage extends Block{
             attrs:{
             },
             events:{
-                click:(e:object) => {
-                    //console.log(e)
-                    if (e.target.closest('.chat-list__element')) {
+                click:(e:MouseEvent) => {
+                    if ((e.target as HTMLElement).closest('.chat-list__element')) {
                         const k =  this.props.chatSelect 
                         k.selectedStatus = true
                         this.setProps({
                             chatSelect: k
                         })
                     } 
-                    else if (e.target.closest('.drop_menu_show-button')) {
+                    else if ((e.target as HTMLElement).closest('.drop_menu_show-button')) {
                         //const k =  !this.props.showDialogAddUser 
                         //this.setProps({
                         //    showDialogAddUser: k
@@ -116,8 +139,8 @@ export default class ChatListPage extends Block{
 
             DialogAddUser: new DialogAddUser({
                 events:{
-                    click:(e)=>{
-                        if(e.target.classList.contains('dialog_shirma')){
+                    click:(e:MouseEvent)=>{
+                        if((e.target as HTMLElement).classList.contains('dialog_shirma')){
                             this.setProps({
                                 showDialogAddUser:false,
                                 showDialogRemoveUser:false,
@@ -130,8 +153,8 @@ export default class ChatListPage extends Block{
                     name:'login',
                     type:'text',
                    
-                    onChange:(e:object)=>{
-                        const value = e.target.value
+                    onChange:(e:MouseEvent)=>{
+                        const value = (e.target as HTMLInputElement).value
                         this.setProps({
                             ...props,
                             dialogAddUserParams:{
@@ -148,7 +171,7 @@ export default class ChatListPage extends Block{
                     className: 'blue',
                     type:'submit',
                     text:'Добавить',
-                    onClick:(e)=>{
+                    onClick:(e:MouseEvent)=>{
                         e.preventDefault()
                         if(!isEmpty(this.props.dialogAddUserParams.addUserLogin)){
                             console.log(this.props.dialogAddUserParams.addUserLogin)
@@ -158,8 +181,7 @@ export default class ChatListPage extends Block{
                             })
                         }
                         else{
-                            console.log(this.children)
-                            this.children.DialogAddUser.children.LoginInput.setProps({
+                            (this.children as PageChildren).(DialogAddUser.children as PageChildren).LoginInput.setProps({
                                 errorText:'Логин пустой'
                             })
                             this.setProps({
@@ -177,8 +199,8 @@ export default class ChatListPage extends Block{
 
             DialogRemoveUser: new DialogRemoveUser({
                 events:{
-                    click:(e:object)=>{
-                        if(e.target.classList.contains('dialog_shirma')){
+                    click:(e:MouseEvent)=>{
+                        if((e.target as HTMLElement).classList.contains('dialog_shirma')){
                             this.setProps({
                                 showDialogAddUser:false,
                                 showDialogRemoveUser:false,
@@ -191,8 +213,8 @@ export default class ChatListPage extends Block{
                     name:'login',
                     type:'text',
                    
-                    onChange:(e:object)=>{
-                        const value = e.target.value
+                    onChange:(e:MouseEvent)=>{
+                        const value = (e.target as HTMLInputElement).value
                         this.setProps({
                             ...props,
                             dialogAddUserParams:{
@@ -200,7 +222,6 @@ export default class ChatListPage extends Block{
                                 addUserLoginError:''
                             },
                         })
-                        console.log(e.target)
                     }
 
                 }),
@@ -209,18 +230,16 @@ export default class ChatListPage extends Block{
                     className: 'blue',
                     type:'submit',
                     text:'Удалить',
-                    onClick:(e)=>{
+                    onClick:(e:MouseEvent)=>{
                         e.preventDefault()
                         if(!isEmpty(this.props.dialogAddUserParams.addUserLogin)){
-                            console.log(this.props.dialogAddUserParams.addUserLogin)
                             this.setProps({
                                 showDialogAddUser:false,
                                 showDialogRemoveUser:false,
                             })
                         }
                         else{
-                            console.log(this.children)
-                            this.children.DialogRemoveUser.children.LoginInput.setProps({
+                            (this.children as PageChildren).DialogRemoveUser.children.LoginInput.setProps({
                                 errorText:'Логин пустой'
                             })
                             this.setProps({
@@ -280,9 +299,8 @@ export default class ChatListPage extends Block{
                     label: "",
                     name : "message",
                 },
-                onChange:(e:object)=>{
-                    const value =  e.target.value;
-                    console.log(value)
+                onChange:(e:MouseEvent)=>{
+                    const value =  (e.target as HTMLInputElement).value;
                     if(!isEmpty(value)){
                         this.setProps({
                             ...props,
