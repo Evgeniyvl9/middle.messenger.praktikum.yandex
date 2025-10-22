@@ -30,11 +30,7 @@ interface ChatListPageProps {
     userActionsShow:boolean;
     showFileAddDialog:boolean;
 }
-interface PageChildren {
-  DialogRemoveUser: {
-    children: object;
-  };
-}
+
 export default class ChatListPage extends Block{
     public props: ChatListPageProps;
     public children: unknown; // или конкретный тип
