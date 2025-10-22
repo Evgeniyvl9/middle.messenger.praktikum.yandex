@@ -24,7 +24,7 @@ type ChatListPageProps = {
 };
 
 export default class ChatListPage extends Block{
-    constructor(props:object){
+    constructor(props:ChatListPageProps){
         super('div',{
             ...props,
             userActionsShow:false,
