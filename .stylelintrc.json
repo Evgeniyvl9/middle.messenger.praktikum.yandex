@@ -7,7 +7,7 @@
     "rule-empty-line-before": null,
     "color-hex-case": null,
     "color-hex-length": null,
-    "color-function-notation": null,
+    "color-function-notation": null
   },
   "ignoreFiles": [
     "build/*",
