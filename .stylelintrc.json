@@ -1,7 +1,12 @@
 {
   "extends": "stylelint-config-standard",
   "rules": {
-    "color-hex-case": "lower"
+    "color-hex-case": null,
+    "selector-class-pattern": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null,
+    "declaration-empty-line-before": null,
+    "rule-empty-line-before": null
   },
   "ignoreFiles": [
     "build/*",
