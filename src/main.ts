@@ -26,9 +26,19 @@ const pages = {
   'registration' : [Pages.Registration],
   'chat-list'    : [Pages.ChatListPage,{
         chats:[
-          {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'2' },
-          {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam ', mess_time:'10:49',mess_count:'3' }, 
-          {name:'Андрей', avatar:avatar,last_mess:'Lorem ipsum, dolor sit amet  Aut aperiam magnam ', mess_time:'10:49',mess_count:'' },
+          {name:'Андрей', 
+            avatar:avatar,last_mess:'Lelit. Aut aperiam magnam ', 
+            mess_time:'10:49',
+            mess_count:'2' },
+          {name:'Андрей', 
+            avatar:avatar,
+            last_mess:'Lorem ipsum, . Aut aperiam magnam ',
+             mess_time:'10:49',mess_count:'3' }, 
+          {name:'Андрей', 
+
+            avatar:avatar,
+            last_mess:'Lorem ipsum, dolor magnam ', 
+            mess_time:'10:49',mess_count:'' },
         
         ] ,
         showDialogAddUser:false,
