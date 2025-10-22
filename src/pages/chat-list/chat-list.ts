@@ -1,6 +1,4 @@
 import Block from '/src/core/block.ts'
-import Handlebars from 'handlebars';
-import Dialog from  '/src/components/dialog/dialog'
 import Button from  '/src/components/button/button'
 import Input from  '/src/components/input/input'
 import InputWithoutLabel from '/src/components/input/inputWithoutLabel/inputWithoutLabel';
@@ -10,15 +8,14 @@ import DialogRemoveUser from '/src/components/dialogRemoveUser/dialogRemoveUser'
 import DialogAddUser from '/src/components/dialogAddUser/dialogAddUser';
 import isEmpty from '/src/core/functions.ts'
 import avatar   from '/src/assets/avatar.jpg'
-import profIcon from '/src/assets/profIcon.jpg'
 
-function inputMod(props){
-  return  Handlebars.compile(
-      new Input(props).render()
-    )(
-      props
-    )
-} 
+// function inputMod(props){
+//   return  Handlebars.compile(
+//       new Input(props).render()
+//     )(
+//       props
+//     )
+// } 
 
 
 
@@ -58,14 +55,14 @@ export default class ChatListPage extends Block{
                 click:(e) => {
                     //console.log(e)
                     if (e.target.closest('.chat-list__element')) {
-                        let k =  this.props.chatSelect 
+                        const k =  this.props.chatSelect 
                         k.selectedStatus = true
                         this.setProps({
                             chatSelect: k
                         })
                     } 
                     else if (e.target.closest('.drop_menu_show-button')) {
-                        //let k =  !this.props.showDialogAddUser 
+                        //const k =  !this.props.showDialogAddUser 
                         //this.setProps({
                         //    showDialogAddUser: k
                         //})
@@ -75,8 +72,8 @@ export default class ChatListPage extends Block{
             UserActionsShowBut:  new Button({
                 className: 'drop_menu_show-button',
                 type:'button',
-                onClick:(e)=>{
-                    let nV = !this.props.userActionsShow
+                onClick:()=>{
+                    const nV = !this.props.userActionsShow
                     this.setProps({
                         userActionsShow:nV,
                     })
@@ -134,7 +131,7 @@ export default class ChatListPage extends Block{
                     type:'text',
                    
                     onChange:(e)=>{
-                        let value = e.target.value
+                        const value = e.target.value
                         this.setProps({
                             ...props,
                             dialogAddUserParams:{
@@ -195,7 +192,7 @@ export default class ChatListPage extends Block{
                     type:'text',
                    
                     onChange:(e)=>{
-                        let value = e.target.value
+                        const value = e.target.value
                         this.setProps({
                             ...props,
                             dialogAddUserParams:{
@@ -284,7 +281,7 @@ export default class ChatListPage extends Block{
                     name : "message",
                 },
                 onChange:(e)=>{
-                    let value =  e.target.value;
+                    const value =  e.target.value;
                     console.log(value)
                     if(!isEmpty(value)){
                         this.setProps({
@@ -319,7 +316,7 @@ export default class ChatListPage extends Block{
                 type:'button',
                 
                 onClick:()=>{
-                    let nV = !this.props.showFileAddDialog
+                    const nV = !this.props.showFileAddDialog
                     this.setProps({
                         showFileAddDialog:nV
                     })
@@ -348,7 +345,9 @@ export default class ChatListPage extends Block{
             <div class="chat-list__container">
                 <div class="chat-list">
                     <div class="chat-list__top">
-                        <div class="prof-link"> <a href="">Профиль <img src='{{profIcon}}' alt=""></a>   </div>
+                        <div class="prof-link"> 
+                            <a href="">Профиль <img src='{{profIcon}}' alt=""></a>   
+                        </div>
                         <form action="" class="chat-list__search">
                             <input type="text" placeholder="Поиск">
                         </form>

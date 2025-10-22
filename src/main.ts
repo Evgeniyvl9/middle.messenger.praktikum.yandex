@@ -1,27 +1,22 @@
 import './assets/normalize.css'
 import './assets/style.less'
 import Handlebars from 'handlebars';
-//import * as modules from './modules'
-import Dialog from  '/src/components/dialog/dialog'
-import Button from  '/src/components/button/button'
 import Input from  '/src/components/input/input'
 import * as Pages  from './pages'
 import * as Components from './components'
 import renderDOM from "./core/renderDom";
 import avatar from './assets/avatar.jpg'
-import profIcon from './assets/profIcon.jpg'
-import backIcon from './assets/back.png'
 
 
-function inputMod(props){
-  //return  new Input(props).render()
+// function inputMod(props){
+//   //return  new Input(props).render()
 
-  return  Handlebars.compile(
-      new Input(props).render()
-    )(
-      props
-    )
-} 
+//   return  Handlebars.compile(
+//       new Input(props).render()
+//     )(
+//       props
+//     )
+// } 
 
 
 
@@ -120,7 +115,7 @@ Object.entries(Components).forEach(([name, template]) => {
 
 
 function navigate(page: string) {
-  //@ts-ignore
+  //@ts-expect-error
   const [source, context] = pages[page];
   if (typeof source === "function") {
     renderDOM(new source(context));
@@ -136,7 +131,7 @@ function navigate(page: string) {
 document.addEventListener("DOMContentLoaded", () => navigate("nav"));
 
 document.addEventListener("click", (e) => {
-  //@ts-ignore
+  //@ts-expect-error
   const page = e.target.getAttribute("page");
   if (page) {
     navigate(page);

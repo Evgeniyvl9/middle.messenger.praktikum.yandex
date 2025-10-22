@@ -7,7 +7,7 @@ export default function renderDOM(block: Block) {
   root!.appendChild(block.getContent());
 }
 
-export function render(query:any, block:any) {
+export function render(query:unknown, block:unknown) {
   const root = document.querySelector(query);
 
   // Можно завязаться на реализации вашего класса Block

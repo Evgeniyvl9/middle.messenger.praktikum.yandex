@@ -97,7 +97,7 @@ export default class Block {
     this.componentDidMount();
   }
 
-  componentDidMount(oldProps) {}
+  componentDidMount() {}
 
   dispatchComponentDidMount() {
     this._eventBus().emit(Block.EVENTS.FLOW_CDM);
@@ -111,7 +111,7 @@ export default class Block {
     this._render();
   }
 
-  componentDidUpdate(oldProps, newProps) {
+  componentDidUpdate() {
     return true;
   }
 
@@ -204,7 +204,7 @@ export default class Block {
     const eventBus = this.eventBus();
     const emitBind = eventBus.emit.bind(eventBus);
 
-    return new Proxy(props as any, {
+    return new Proxy(props as unknown, {
       get(target, prop) {
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;

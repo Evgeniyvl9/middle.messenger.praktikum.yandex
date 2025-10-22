@@ -1,6 +1,4 @@
 import Block    from '/src/core/block.ts'
-import Handlebars from 'handlebars';
-import Dialog from  '/src/components/dialog/dialog'
 import Button   from '/src/components/button/button'
 import Input, { inputValidator }    from '/src/components/input/input'
 import InputWithoutLabel    from '/src/components/input/InputWithoutLabel/inputWithoutLabel'
@@ -27,7 +25,7 @@ export default class ProfilePage extends Block {
                 } ,
                 onChange:(e) => {
                     console.log(inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/))
-                    let nValue = e.target.value
+                    const nValue = e.target.value
                     this.children.ChangeValue__first_name.setProps({
                         //error:inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/),
                         className:'qwe',
@@ -70,7 +68,7 @@ export default class ProfilePage extends Block {
                  onBlur: (e) => {// не работает
                     console.log(e)
                     //const value = e.target.value;
-                    //let error = '';
+                    //const error = '';
                     //if(value === "error") {
                     //    error = "Some error is happened."
                     //}
@@ -89,7 +87,7 @@ export default class ProfilePage extends Block {
                     //value:'LastNameVal',
                 },
                 onChange:(e) => {
-                    let nValue = e.target.value
+                    const nValue = e.target.value
                     this.children.ChangeValue__second_name.setProps({
                         value:nValue,
                         error:inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/)
@@ -123,7 +121,7 @@ export default class ProfilePage extends Block {
                     //value:'emailVal',
                 },
                 onChange:(e) => {
-                    let nValue = e.target.value
+                    const nValue = e.target.value
                     this.children.ChangeValue__email.setProps({
                         value:nValue,
                         error:inputValidator(e,/^[a-zA-Z0-9._-]+@[a-zA-Z]+\.[a-zA-Z]+$/)
@@ -157,7 +155,7 @@ export default class ProfilePage extends Block {
                     //value:'LoginValue',
                 },
                 onChange:(e) => {
-                    let nValue = e.target.value
+                    const nValue = e.target.value
                     this.children.ChangeValue__login.setProps({
                         value:nValue,
                         error:inputValidator(e,/^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$/)
@@ -192,7 +190,7 @@ export default class ProfilePage extends Block {
                     //value:'+7 (922) 243 23 23',
                     },
                 onChange:(e) => {
-                    let nValue = e.target.value
+                    const nValue = e.target.value
                     this.children.ChangeValue__phone.setProps({
                         value:nValue,
                         error:inputValidator(e,/^\+?\d{10,15}$/)
@@ -227,7 +225,7 @@ export default class ProfilePage extends Block {
                     //value:'pseudiname',
                 },
                 onChange:(e) => {
-                    let nValue = e.target.value
+                    const nValue = e.target.value
                     this.children.ChangeValue__display_name.setProps({
                         value:nValue,
                         error:inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/)
@@ -293,7 +291,7 @@ export default class ProfilePage extends Block {
                 type:'button',
                 text:'Изменить данные',
                 onClick:()=>{
-                    let nV = !this.props.editModeDisable
+                    const nV = !this.props.editModeDisable
                     this.setProps({
                         editModeDisable:nV,
                     })
@@ -366,7 +364,7 @@ export default class ProfilePage extends Block {
                     //value:'pseudiname',
                 },
                 onChange:(e) => {
-                    let nValue = e.target.value
+                    const nValue = e.target.value
                     this.children.OldPassInput.setProps({
                         value:nValue,
                         error:inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/)
@@ -386,7 +384,7 @@ export default class ProfilePage extends Block {
                     name: 'password',
                 },
                 onChange:(e) => {
-                    let nValue = e.target.value
+                    const nValue = e.target.value
                     // this.children.NewPassInput.setProps({
                     //     value:nValue,
                     //     error:inputValidator(e,/^(?=.*[A-Z])(?=.*\d).{8,40}$/)
@@ -404,7 +402,7 @@ export default class ProfilePage extends Block {
                     name: 'password_repeat',
                 },
                 onChange:(e) => {
-                     let nValue = e.target.value
+                     const nValue = e.target.value
                     // this.children.NewPassInputRepeat.setProps({
                     //     value:nValue,
                     //     error:inputValidator(e,/^(?=.*[A-Z])(?=.*\d).{8,40}$/)

@@ -1,9 +1,8 @@
-import template from './login.hbs?raw'
 import Block    from '/src/core/block'
 import Button   from  '/src/components/button/button'
 import Input    from  '/src/components/input/input'
 export default class Login extends Block{
-    constructor(props:any){
+    constructor(props:unknown){
         super('div',{
             ...props,
             InputLogin:new Input({
