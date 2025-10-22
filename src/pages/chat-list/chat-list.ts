@@ -180,7 +180,8 @@ export default class ChatListPage extends Block{
                         }
                         else{
                             console.log(this.children)
-                            (this.children as PageChildren).DialogAddUser.children.LoginInput.setProps({
+                            (this.children as PageChildren)
+                                .DialogAddUser.children.LoginInput.setProps({
                                 errorText:'Логин пустой'
                             })
                             this.setProps({
@@ -239,9 +240,11 @@ export default class ChatListPage extends Block{
                         }
                         else{
                             console.log(this.children)
-                            (this.children as PageChildren).DialogRemoveUser.children.LoginInput.setProps({
-                                errorText:'Логин пустой'
-                            })
+                            (this.children as PageChildren)
+                                .DialogRemoveUser.children
+                                .LoginInput.setProps({
+                                    errorText:'Логин пустой'
+                                })
                             this.setProps({
                                 dialogAddUserParams:{
                                     addUserLogin:'',
