@@ -17,14 +17,9 @@ import avatar   from '/src/assets/avatar.jpg'
 //     )
 // } 
 
-type ChatListPageProps = {
-  props: object;
-  setProps: () => void;
-  children:object;
-};
 
 export default class ChatListPage extends Block{
-    constructor(props:ChatListPageProps){
+    constructor(props: unknown){
         super('div',{
             ...props,
             userActionsShow:false,
