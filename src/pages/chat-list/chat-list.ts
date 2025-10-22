@@ -26,7 +26,7 @@ interface ChatListPageProps {
     newMessageContent:{
         text:string
     },
-    children:{};
+    children:object;
     userActionsShow:boolean;
     showFileAddDialog:boolean;
 }
