@@ -2,7 +2,7 @@ import Block from '../../core/block';
 import template from './button.hbs?raw'
 
 export default class Button extends Block {
-    constructor(props:object) {
+    constructor(props:unknown) {
         super("div",{
             ...props,
             className: props.className,

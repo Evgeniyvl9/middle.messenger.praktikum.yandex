@@ -17,10 +17,14 @@ import avatar   from '/src/assets/avatar.jpg'
 //     )
 // } 
 
-
+type ChatListPageProps = {
+  props: object;
+  setProps: () => void;
+  children:object;
+};
 
 export default class ChatListPage extends Block{
-    constructor(props:unknown){
+    constructor(props:object){
         super('div',{
             ...props,
             userActionsShow:false,
@@ -52,7 +56,7 @@ export default class ChatListPage extends Block{
             attrs:{
             },
             events:{
-                click:(e) => {
+                click:(e:object) => {
                     //console.log(e)
                     if (e.target.closest('.chat-list__element')) {
                         const k =  this.props.chatSelect 
@@ -130,7 +134,7 @@ export default class ChatListPage extends Block{
                     name:'login',
                     type:'text',
                    
-                    onChange:(e)=>{
+                    onChange:(e:object)=>{
                         const value = e.target.value
                         this.setProps({
                             ...props,
@@ -177,7 +181,7 @@ export default class ChatListPage extends Block{
 
             DialogRemoveUser: new DialogRemoveUser({
                 events:{
-                    click:(e)=>{
+                    click:(e:object)=>{
                         if(e.target.classList.contains('dialog_shirma')){
                             this.setProps({
                                 showDialogAddUser:false,
@@ -191,7 +195,7 @@ export default class ChatListPage extends Block{
                     name:'login',
                     type:'text',
                    
-                    onChange:(e)=>{
+                    onChange:(e:object)=>{
                         const value = e.target.value
                         this.setProps({
                             ...props,
@@ -280,7 +284,7 @@ export default class ChatListPage extends Block{
                     label: "",
                     name : "message",
                 },
-                onChange:(e)=>{
+                onChange:(e:object)=>{
                     const value =  e.target.value;
                     console.log(value)
                     if(!isEmpty(value)){
