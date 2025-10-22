@@ -3,5 +3,16 @@
     "no-unused-vars": 2,
     "max-len": [1, 100],
     "max-params": [2, 3]
+    },  
+    "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"],
+      "extends": [
+        "eslint:recommended",
+        "@typescript-eslint/recommended"
+      ]
     }
+  ]
 } 
