@@ -16,8 +16,8 @@ export function inputValidator(e,regex){
 export default class Input extends Block {
     constructor(props){
         super('div',{
-             ...props,
-             tabindex:9,
+            ...props,
+            tabindex:9,
             events: {
                 //click: props.onClick,
                 blur:props.onChange,

@@ -1,9 +1,13 @@
 import Dialog from '../dialog'
 
 export default class DialogUserActions extends Dialog {
-    constructor(props:object){
+    constructor(props:unknown){
         super({
             ...props,
+            events:{
+                blur:props.onChange,
+                change:props.onChange
+            }
             
         })
     }

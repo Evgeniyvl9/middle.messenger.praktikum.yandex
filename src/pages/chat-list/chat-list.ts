@@ -1,13 +1,14 @@
 import Block from '/src/core/block.ts'
 import Handlebars from 'handlebars';
-//import Dialog from  '/src/components/dialog/dialog'
 import Dialog from  '/src/components/dialog/dialog'
 import Button from  '/src/components/button/button'
 import Input from  '/src/components/input/input'
-
+import InputWithoutLabel from '/src/components/input/inputWithoutLabel/inputWithoutLabel';
 import DialogMessageFiles from  '/src/components/dialog/dialogMessageFiles/dialogMessageFiles'
 import DialogUserActions from  '/src/components/dialog/dialogUserActions/dialogUserActions'
-
+import DialogRemoveUser from '/src/components/dialogRemoveUser/dialogRemoveUser'
+import DialogAddUser from '/src/components/dialogAddUser/dialogAddUser';
+import isEmpty from '/src/core/functions.ts'
 import avatar   from '/src/assets/avatar.jpg'
 import profIcon from '/src/assets/profIcon.jpg'
 
@@ -22,11 +23,12 @@ function inputMod(props){
 
 
 export default class ChatListPage extends Block{
-    constructor(props:any){
+    constructor(props:unknown){
         super('div',{
             ...props,
             userActionsShow:false,
             showFileAddDialog:false,
+
             chatSelect:{
                 selectedStatus:false,
                 chatUser:'Andrey',
@@ -80,6 +82,9 @@ export default class ChatListPage extends Block{
                     })
                 },
             }),
+
+            
+            
             DialogUserActions:new DialogUserActions({
                 AddUserDialogRun:    new Button({
                     className: 'drop_menu__element',
@@ -106,47 +111,207 @@ export default class ChatListPage extends Block{
                     },
                 }), 
             }) ,
-            DialogAddUser: new Dialog({
-                title:'Добавить пользователя',
-                partialBlock:'<div>'+ inputMod(      
-                    {
-                        type : "text" ,
-                        label: "Логин",
-                        name : "login"
+
+            dialogAddUserParams:{
+                addUserLogin:'',
+                addUserLoginError:''
+            },
+
+            DialogAddUser: new DialogAddUser({
+                events:{
+                    click:(e)=>{
+                        if(e.target.classList.contains('dialog_shirma')){
+                            this.setProps({
+                                showDialogAddUser:false,
+                                showDialogRemoveUser:false,
+                            })
+                        }
                     }
-                )+'</div>',
-                onClose:()=>{
-                    this.setProps({
-                        showDialogAddUser:false,
-                        showDialogRemoveUser:false,
-                    })
                 },
-                button: new Button({
+                LoginInput:new Input({
+                    label:'Логин',
+                    name:'login',
+                    type:'text',
+                   
+                    onChange:(e)=>{
+                        let value = e.target.value
+                        this.setProps({
+                            ...props,
+                            dialogAddUserParams:{
+                                addUserLogin:value,
+                                addUserLoginError:''
+                            },
+                        })
+                        console.log(e.target)
+                    }
+
+                }),
+                errorText:'',
+                AddUserButton:new Button({
                     className: 'blue',
                     type:'submit',
                     text:'Добавить',
-                    onClick:()=>{
-                        this.setProps({
-                            showDialogAddUser:false,
-                            showDialogRemoveUser:false,
-                        })
+                    onClick:(e)=>{
+                        e.preventDefault()
+                        if(!isEmpty(this.props.dialogAddUserParams.addUserLogin)){
+                            console.log(this.props.dialogAddUserParams.addUserLogin)
+                            this.setProps({
+                                showDialogAddUser:false,
+                                showDialogRemoveUser:false,
+                            })
+                        }
+                        else{
+                            console.log(this.children)
+                            this.children.DialogAddUser.children.LoginInput.setProps({
+                                errorText:'Логин пустой'
+                            })
+                            this.setProps({
+                                dialogAddUserParams:{
+                                    addUserLogin:'',
+                                    addUserLoginError:''
+                                },
+                            })
+                            console.log('Login is empty ')
+                        }
+
                     },
                 }),
-
             }),
-            NewMessage: new Input({
-                type : "text" ,
-                label: "",
-                name : "message"
+
+            DialogRemoveUser: new DialogRemoveUser({
+                events:{
+                    click:(e)=>{
+                        if(e.target.classList.contains('dialog_shirma')){
+                            this.setProps({
+                                showDialogAddUser:false,
+                                showDialogRemoveUser:false,
+                            })
+                        }
+                    }
+                },
+                LoginInput:new Input({
+                    label:'Логин',
+                    name:'login',
+                    type:'text',
+                   
+                    onChange:(e)=>{
+                        let value = e.target.value
+                        this.setProps({
+                            ...props,
+                            dialogAddUserParams:{
+                                addUserLogin:value,
+                                addUserLoginError:''
+                            },
+                        })
+                        console.log(e.target)
+                    }
+
+                }),
+                errorText:'',
+                RemoveUserButton:new Button({
+                    className: 'blue',
+                    type:'submit',
+                    text:'Удалить',
+                    onClick:(e)=>{
+                        e.preventDefault()
+                        if(!isEmpty(this.props.dialogAddUserParams.addUserLogin)){
+                            console.log(this.props.dialogAddUserParams.addUserLogin)
+                            this.setProps({
+                                showDialogAddUser:false,
+                                showDialogRemoveUser:false,
+                            })
+                        }
+                        else{
+                            console.log(this.children)
+                            this.children.DialogRemoveUser.children.LoginInput.setProps({
+                                errorText:'Логин пустой'
+                            })
+                            this.setProps({
+                                dialogAddUserParams:{
+                                    addUserLogin:'',
+                                    addUserLoginError:''
+                                },
+                            })
+                            console.log('Login is empty ')
+                        }
+
+                    },
+                }),
+            }),
+            // DialogAddUser: new Dialog({
+            //     title:'Добавить пользователя',
+            //     partialBlock:'<div>'+ inputMod(      
+            //         {
+                        
+            //             type : "text" ,
+            //             label: "Логин",
+            //             name : "login",
+            //             events:{
+            //                 onChange:(e)=>{
+            //                     console.log(e.target)
+            //                 }
+            //             }
+            //         }
+            //     )+'</div>',
+            //     onClose:()=>{
+            //         this.setProps({
+            //             showDialogAddUser:false,
+            //             showDialogRemoveUser:false,
+            //         })
+            //     },
+            //     button: new Button({
+            //         className: 'blue',
+            //         type:'submit',
+            //         text:'Добавить',
+            //         onClick:()=>{
+            //             this.setProps({
+            //                 showDialogAddUser:false,
+            //                 showDialogRemoveUser:false,
+            //             })
+            //         },
+            //     }),
+
+            // }),
+
+            
+            newMessageContent:{
+                text:''
+            },
+            NewMessage: new InputWithoutLabel({
+                attrs:{
+                    type : "text" ,
+                    label: "",
+                    name : "message",
+                },
+                onChange:(e)=>{
+                    let value =  e.target.value;
+                    console.log(value)
+                    if(!isEmpty(value)){
+                        this.setProps({
+                            ...props,
+                            newMessageContent:{
+                                text:value
+                            }
+                        })
+                    }
+                   
+                },
             }),
             NewMessageSubmitBut: new Button({
                 className: 'send_message_button',
                 type:'submit',
                 onClick:()=>{
-                    this.setProps({
-                        showDialogAddUser:false,
-                        showDialogRemoveUser:false,
-                    })
+                    if(!isEmpty(this.props.newMessageContent.text)){
+                        console.log(this.props.newMessageContent.text)
+
+                    }
+                    else{
+                        alert('Message is empty')
+                    }
+                    // this.setProps({
+                    //     showDialogAddUser:false,
+                    //     showDialogRemoveUser:false,
+                    // })
                 },
             }),
             FilesAdd: new Button({

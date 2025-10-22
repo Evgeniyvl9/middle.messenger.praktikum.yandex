@@ -1,2 +1,2 @@
 import './dialogRemoveUser.less'
-export {default as DialogRemoveUser} from './dialogRemoveUser.hbs?raw'
+export {default as DialogRemoveUser} from './dialogRemoveUser.ts'

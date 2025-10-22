@@ -20,3 +20,7 @@
   font-size: 13px;
   font-weight: 500;
 }
+.input-wrap .error_mes {
+  color: var(--error-text-color);
+  font-size: 10px;
+}
