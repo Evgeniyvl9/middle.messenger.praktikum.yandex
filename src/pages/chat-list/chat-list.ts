@@ -32,9 +32,7 @@ interface ChatListPageProps {
 }
 interface PageChildren {
   DialogRemoveUser: {
-    children: {
-        LoginInput:object
-    };
+    children: object;
   };
 }
 export default class ChatListPage extends Block{
@@ -181,7 +179,8 @@ export default class ChatListPage extends Block{
                             })
                         }
                         else{
-                            (this.children as PageChildren).(DialogAddUser.children as PageChildren).LoginInput.setProps({
+                            console.log(this.children)
+                            (this.children as PageChildren).DialogAddUser.children.LoginInput.setProps({
                                 errorText:'Логин пустой'
                             })
                             this.setProps({
@@ -239,6 +238,7 @@ export default class ChatListPage extends Block{
                             })
                         }
                         else{
+                            console.log(this.children)
                             (this.children as PageChildren).DialogRemoveUser.children.LoginInput.setProps({
                                 errorText:'Логин пустой'
                             })
