@@ -3,7 +3,7 @@ export default class EventBus<E extends string> {
   constructor() {
     this.listeners = {};
   }
-  on(event: E, callback: Function) {
+  on(event: E, callback: ((...args: unknown[]) => void)[]) {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }

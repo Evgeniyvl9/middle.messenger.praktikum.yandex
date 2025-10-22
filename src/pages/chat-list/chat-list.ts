@@ -33,7 +33,7 @@ export default class ChatListPage extends Block{
                 messageList:[
                     {
                         userIsSender:false,
-                        mess:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut aperiam magnam',
+                        mess:'Lorem ipsum, dolor s elit. ',
                         mess_time:'10:49'
                     },
                     {
@@ -43,7 +43,7 @@ export default class ChatListPage extends Block{
                     },
                     {
                         userIsSender:true,
-                        mess:'Lorem ipsum, dolor sit amet consectetur adipisicing  ',
+                        mess:'Lorem ipsum, dolor sit   adipisicing  ',
                         mess_time:'10:49'
                     }
                 ]

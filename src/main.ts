@@ -1,7 +1,6 @@
 import './assets/normalize.css'
 import './assets/style.less'
 import Handlebars from 'handlebars';
-import Input from  '/src/components/input/input'
 import * as Pages  from './pages'
 import * as Components from './components'
 import renderDOM from "./core/renderDom";
@@ -115,7 +114,6 @@ Object.entries(Components).forEach(([name, template]) => {
 
 
 function navigate(page: string) {
-  //@ts-expect-error
   const [source, context] = pages[page];
   if (typeof source === "function") {
     renderDOM(new source(context));
@@ -131,7 +129,6 @@ function navigate(page: string) {
 document.addEventListener("DOMContentLoaded", () => navigate("nav"));
 
 document.addEventListener("click", (e) => {
-  //@ts-expect-error
   const page = e.target.getAttribute("page");
   if (page) {
     navigate(page);

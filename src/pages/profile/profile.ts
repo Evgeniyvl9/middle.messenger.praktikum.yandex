@@ -1,6 +1,6 @@
 import Block    from '/src/core/block.ts'
 import Button   from '/src/components/button/button'
-import Input, { inputValidator }    from '/src/components/input/input'
+import { inputValidator }    from '/src/components/input/input'
 import InputWithoutLabel    from '/src/components/input/InputWithoutLabel/inputWithoutLabel'
 import avatar   from '/src/assets/avatar.jpg'
 import profIcon from '/src/assets/profIcon.jpg'
