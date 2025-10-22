@@ -70,7 +70,7 @@ body,
   чтобы избежать взаимодействие с более сложным селектором
  */
 p {
-  --paragraphMarginBottom: 24px;
+  --paragraph-Margin-Bottom: 24px;
 
   margin-block: 0;
 }
@@ -80,7 +80,7 @@ p {
   который расположен не последним среди своих соседних элементов
  */
 p:where(:not([class], :last-child)) {
-  margin-bottom: var(--paragraphMarginBottom);
+  margin-bottom: var(--paragraph-Margin-Bottom);
 }
 
 
