@@ -19,6 +19,7 @@ import avatar   from '/src/assets/avatar.jpg'
 
 
 export default class ChatListPage extends Block{
+    public props: unknown;
     constructor(props: unknown){
         super('div',{
             ...props,
