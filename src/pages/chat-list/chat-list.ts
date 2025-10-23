@@ -31,7 +31,7 @@ interface ChatListPageProps {
     userActionsShow:boolean;
     showFileAddDialog:boolean;
 }
-type Children = Record<string, { children: Record<string, { setProps: (props: any) => void }> }>;
+type Children = Record<string, { children: Record<string, { setProps: (props: unknown) => void }> }>;
 
 export default class ChatListPage extends Block{
     public props: ChatListPageProps;
