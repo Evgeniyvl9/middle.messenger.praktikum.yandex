@@ -7,6 +7,7 @@ import profIcon from '../../assets/profIcon.jpg'
 import backIcon from '../../assets/back.png'
 
 interface ProfilePageProps {
+    [key: string]: unknown;
     tabindex:number;
     events: {
     //click: props.onClick,
@@ -18,12 +19,16 @@ interface ProfilePageProps {
     type: string;
     name: string;
     id:   string;
-    props:object;
+    props:{
+        [key: string]: unknown;
+    };
     onChange:  () => void;
 }
+
+
 export default class ProfilePage extends Block {
-    public props:unknown; // или конкретный тип
-    public children:unknown; // или конкретный тип
+    public props:ProfilePageProps; // или конкретный тип
+    public children:ProfilePageProps; // или конкретный тип
     constructor(props:ProfilePageProps){
         //props = this.props
         super('div',{
