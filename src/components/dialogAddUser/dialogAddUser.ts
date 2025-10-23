@@ -1,5 +1,5 @@
 import Block from '../../core/block.ts'
-interface DialogAddUser {
+interface DialogAddUserProps  {
      [key: string]: unknown;
     onClose?: () => void;
     onBlur?: () => void;
@@ -7,7 +7,7 @@ interface DialogAddUser {
     events?:{}
 }
 export default class DialogAddUser extends Block{
-    constructor(props:DialogAddUser){
+    constructor(props:DialogAddUserProps ){
         super('div',{
             ...props,
             classsName:'dialog-container',

@@ -19,8 +19,7 @@
     "noUncheckedSideEffectImports": true,
     "noImplicitAny":true,
     "sourceMap":true,
-    "strictNullChecks":true,
-    "allowObjectTypes":true
+    "strictNullChecks":true
   },
   "include": ["src"]
 }
