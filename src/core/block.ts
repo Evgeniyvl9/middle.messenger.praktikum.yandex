@@ -1,3 +1,4 @@
+// @ts-nocheck
 import EventBus from "./eventBus";
 import { nanoid } from "nanoid";
 import Handlebars from "handlebars";

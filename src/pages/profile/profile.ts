@@ -1,10 +1,10 @@
-import Block    from '../../core/block.ts'
-import Button   from '../../components/button/button'
-import { inputValidator }    from '../../components/input/input'
+import Block                from '../../core/block'
+import Button               from '../../components/button/button'
+import { inputValidator }   from '../../components/input/input'
 import InputWithoutLabel    from  '../../components/input/inputWithoutLabel/inputWithoutLabel'
-import avatar   from '../../assets/avatar.jpg'
-import profIcon from '../../assets/profIcon.jpg'
-import backIcon from '../../assets/back.png'
+import avatar               from '../../assets/avatar.jpg'
+import profIcon             from '../../assets/profIcon.jpg'
+import backIcon             from '../../assets/back.png'
 
 interface ProfilePageProps {
     [key: string]: unknown;

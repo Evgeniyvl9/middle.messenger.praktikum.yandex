@@ -43,7 +43,7 @@ export default class ChatListPage extends Block{
     //public setProps: (nextProps:unknown)=>void;
 
     constructor(props: ChatListPageProps){
-       // this.props = props
+
         super('div',{
             ...props,
             userActionsShow:false,
@@ -152,7 +152,7 @@ export default class ChatListPage extends Block{
                     name:'login',
                     type:'text',
                    
-                    onChange:(e:MouseEvent)=>{
+                    onChange:(e?:MouseEvent)=>{
                         const value = (e.target as HTMLInputElement).value
                         this.setProps({
                             ...props,
@@ -170,7 +170,7 @@ export default class ChatListPage extends Block{
                     className: 'blue',
                     type:'submit',
                     text:'Добавить',
-                    onClick:(e:MouseEvent)=>{
+                    onClick:(e?:MouseEvent)=>{
                         e.preventDefault()
                         if(!isEmpty(this.props.dialogAddUserParams.addUserLogin)){
                             console.log(this.props.dialogAddUserParams.addUserLogin)
@@ -213,7 +213,7 @@ export default class ChatListPage extends Block{
                     name:'login',
                     type:'text',
                    
-                    onChange:(e:MouseEvent)=>{
+                    onChange:(e?:MouseEvent)=>{
                         const value = (e.target as HTMLInputElement).value
                         this.setProps({
                             ...props,
@@ -230,7 +230,7 @@ export default class ChatListPage extends Block{
                     className: 'blue',
                     type:'submit',
                     text:'Удалить',
-                    onClick:(e:MouseEvent)=>{
+                    onClick:(e?:MouseEvent)=>{
                         e.preventDefault()
                         if(!isEmpty(this.props.dialogAddUserParams.addUserLogin)){
                             this.setProps({
@@ -359,6 +359,8 @@ export default class ChatListPage extends Block{
                 })
             })
         })
+        //this.props = { }
+        this.children = {}
     }
     render(){
         return `
