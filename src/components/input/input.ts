@@ -16,15 +16,15 @@ interface InputProps {
     tabindex?:number;
     events?: {
     //click: props.onClick,
-        blur?:    () => void;
-        change?:  () => void;
+        blur?:    (e:Event) => void;
+        change?:  (e:Event) => void;
 
     };
     label?:string;
     type?: string;
     name?: string;
     id?:   string;
-    onChange?:  () => void;
+    onChange?:  (e:Event) => void;
     className?:string;
     access?:string;
 }

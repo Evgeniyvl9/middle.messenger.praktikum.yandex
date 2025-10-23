@@ -27,18 +27,15 @@ interface ChatListPageProps {
     newMessageContent:{
         text:string
     },
-    children:{
-        [key: string]: unknown;
-    };
+    children:Record<string, unknown>;
     userActionsShow:boolean;
     showFileAddDialog:boolean;
 }
+type Children = Record<string, { children: Record<string, { setProps: (props: any) => void }> }>;
 
 export default class ChatListPage extends Block{
     public props: ChatListPageProps;
-    public children: {
-        [key: string]: unknown;
-    }; // или конкретный тип
+    public children: Children = {} as Children; // или конкретный тип
 
     //public setProps: (nextProps:unknown)=>void;
 
@@ -75,7 +72,7 @@ export default class ChatListPage extends Block{
             attrs:{
             },
             events:{
-                click:(e:MouseEvent) => {
+                click:(e:Event) => {
                     if ((e.target as HTMLElement).closest('.chat-list__element')) {
                         const k =  this.props.chatSelect 
                         k.selectedStatus = true
@@ -138,7 +135,7 @@ export default class ChatListPage extends Block{
 
             DialogAddUser: new DialogAddUser({
                 events:{
-                    click:(e:MouseEvent)=>{
+                    click:(e:Event)=>{
                         if((e.target as HTMLElement).classList.contains('dialog_shirma')){
                             this.setProps({
                                 showDialogAddUser:false,
@@ -152,7 +149,7 @@ export default class ChatListPage extends Block{
                     name:'login',
                     type:'text',
                    
-                    onChange:(e?:MouseEvent)=>{
+                    onChange:(e:Event)=>{
                         const value = (e.target as HTMLInputElement).value
                         this.setProps({
                             ...props,
@@ -170,7 +167,7 @@ export default class ChatListPage extends Block{
                     className: 'blue',
                     type:'submit',
                     text:'Добавить',
-                    onClick:(e?:MouseEvent)=>{
+                    onClick:(e:Event)=>{
                         e.preventDefault()
                         if(!isEmpty(this.props.dialogAddUserParams.addUserLogin)){
                             console.log(this.props.dialogAddUserParams.addUserLogin)
@@ -199,7 +196,7 @@ export default class ChatListPage extends Block{
 
             DialogRemoveUser: new DialogRemoveUser({
                 events:{
-                    click:(e:MouseEvent)=>{
+                    click:(e:Event)=>{
                         if((e.target as HTMLElement).classList.contains('dialog_shirma')){
                             this.setProps({
                                 showDialogAddUser:false,
@@ -213,7 +210,7 @@ export default class ChatListPage extends Block{
                     name:'login',
                     type:'text',
                    
-                    onChange:(e?:MouseEvent)=>{
+                    onChange:(e:Event)=>{
                         const value = (e.target as HTMLInputElement).value
                         this.setProps({
                             ...props,
@@ -230,7 +227,7 @@ export default class ChatListPage extends Block{
                     className: 'blue',
                     type:'submit',
                     text:'Удалить',
-                    onClick:(e?:MouseEvent)=>{
+                    onClick:(e:Event)=>{
                         e.preventDefault()
                         if(!isEmpty(this.props.dialogAddUserParams.addUserLogin)){
                             this.setProps({
@@ -301,7 +298,7 @@ export default class ChatListPage extends Block{
                     label: "",
                     name : "message",
                 },
-                onChange:(e:MouseEvent)=>{
+                onChange:(e:Event)=>{
                     const value =  (e.target as HTMLInputElement).value;
                     if(!isEmpty(value)){
                         this.setProps({
@@ -359,8 +356,8 @@ export default class ChatListPage extends Block{
                 })
             })
         })
-        //this.props = { }
-        this.children = {}
+        this.props = props
+        //this.children = children
     }
     render(){
         return `

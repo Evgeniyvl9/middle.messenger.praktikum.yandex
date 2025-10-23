@@ -1,9 +1,9 @@
 import Block from '../../core/block.ts'
 interface DialogAddUserProps  {
     [key: string]: unknown;
-    onClose?: () => void;
-    onBlur?: () => void;
-    onChange?: () => void;
+    onClose?: (e:Event) => void;
+    onBlur?: (e:Event) => void;
+    onChange?: (e:Event) => void;
     events?:object;
 }
 export default class DialogAddUser extends Block{

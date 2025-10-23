@@ -5,9 +5,9 @@ interface ButtonProps {
   className?: string;
   type?: string;
   text?: string;
-    onClick?: () => void;
-    onBlur?: () => void;
-    onChange?: () => void;
+    onClick?: (e:Event) => void;
+    onBlur?:  (e:Event) => void;
+    onChange?:(e:Event) => void;
 }
 export default class Button extends Block {
     constructor(props:ButtonProps) {
