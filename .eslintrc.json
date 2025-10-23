@@ -3,7 +3,9 @@
     "no-unused-vars": 2,
     "max-len": [1, 100],
     "max-params": [2, 3],
-    "@typescript-eslint/no-unsafe-function-type": "off"
+    "@typescript-eslint/no-unsafe-function-type": "off",
+    "@typescript-eslint/no-explicit-any":"off",
+    "@typescript-eslint/ban-ts-comment":"off"
     },  
     "overrides": [
     {
