@@ -1,8 +1,16 @@
 import Block from '../../core/block';
 import template from './button.hbs?raw'
 
+interface ButtonProps {
+  className?: string;
+  type?: string;
+  text?: string;
+    onClick?:Function;
+    onBlur?:Function;
+    onChange?:Function;
+}
 export default class Button extends Block {
-    constructor(props:unknown) {
+    constructor(props:ButtonProps) {
         super("div",{
             ...props,
             className: props.className,

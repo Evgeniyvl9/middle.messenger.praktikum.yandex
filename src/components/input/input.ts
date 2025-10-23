@@ -1,9 +1,9 @@
-import Block    from '/src/core/block'
+import Block    from '../../core/block'
 import template from './input.hbs?raw'
 
-export function inputValidator(e,regex){
+export function inputValidator(e:Event,regex:RegExp){
     if(regex){
-        if (!regex.test(e.target.value)) {
+        if (!regex.test((e.target as HTMLInputElement).value)) {
            return false
         }
         else {
@@ -11,16 +11,32 @@ export function inputValidator(e,regex){
         }
     }
 }
+interface InputProps {
+     [key: string]: unknown;
+    tabindex?:number;
+    events?: {
+    //click: props.onClick,
+        blur?:   Function;
+        change?: Function;
 
+    };
+    label?:string;
+    type?: string;
+    name?: string;
+    id?:   string;
+    onChange?: Function;
+    className?:string;
+    access?:string;
+}
 
 export default class Input extends Block {
-    constructor(props){
+    constructor(props:InputProps){
         super('div',{
             ...props,
             tabindex:9,
             events: {
                 //click: props.onClick,
-                blur:props.onChange,
+                blur:   props.onChange,
                 change: props.onChange,
 
             },

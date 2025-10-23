@@ -17,6 +17,7 @@ import avatar   from '../../assets/avatar.jpg'
 //     )
 // } 
 interface ChatListPageProps {
+    [key: string]: unknown;
     chatSelect: {
         selectedStatus:boolean
     };
@@ -26,14 +27,18 @@ interface ChatListPageProps {
     newMessageContent:{
         text:string
     },
-    children:object;
+    children:{
+        [key: string]: unknown;
+    };
     userActionsShow:boolean;
     showFileAddDialog:boolean;
 }
 
 export default class ChatListPage extends Block{
     public props: ChatListPageProps;
-    public children: unknown; // или конкретный тип
+    public children: {
+        [key: string]: unknown;
+    }; // или конкретный тип
 
     //public setProps: (nextProps:unknown)=>void;
 

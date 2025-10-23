@@ -1,14 +1,27 @@
-import Block    from '/src/core/block.ts'
-import Button   from '/src/components/button/button'
-import { inputValidator }    from '/src/components/input/input'
-import InputWithoutLabel    from '/src/components/input/InputWithoutLabel/inputWithoutLabel'
-import avatar   from '/src/assets/avatar.jpg'
-import profIcon from '/src/assets/profIcon.jpg'
-import backIcon from '/src/assets/back.png'
+import Block    from '../../core/block.ts'
+import Button   from '../../components/button/button'
+import { inputValidator }    from '../../components/input/input'
+import InputWithoutLabel    from  '../../components/input/inputWithoutLabel/inputWithoutLabel'
+import avatar   from '../../assets/avatar.jpg'
+import profIcon from '../../assets/profIcon.jpg'
+import backIcon from '../../assets/back.png'
 
+interface ProfilePageProps {
+    tabindex:number;
+    events: {
+    //click: props.onClick,
+        blur:   Function;
+        change: Function;
 
+    };
+    label:string;
+    type: string;
+    name: string;
+    id:   string;
+    onChange: Function;
+}
 export default class ProfilePage extends Block {
-    constructor(props){
+    constructor(props:ProfilePageProps){
         super('div',{
              ...props,
             errors:{
@@ -23,7 +36,7 @@ export default class ProfilePage extends Block {
                     //value:'Ivan',
                     tabindex:1
                 } ,
-                onChange:(e) => {
+                onChange:(e:MouseEvent) => {
                     console.log(inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/))
                     const nValue = e.target.value
                     this.children.ChangeValue__first_name.setProps({
@@ -65,7 +78,7 @@ export default class ProfilePage extends Block {
                     //     })
                     // }
                 },
-                 onBlur: (e) => {// не работает
+                 onBlur: (e:MouseEvent) => {// не работает
                     console.log(e)
                     //const value = e.target.value;
                     //const error = '';
@@ -86,7 +99,7 @@ export default class ProfilePage extends Block {
                     name: 'second_name',
                     //value:'LastNameVal',
                 },
-                onChange:(e) => {
+                onChange:(e:MouseEvent) => {
                     const nValue = e.target.value
                     this.children.ChangeValue__second_name.setProps({
                         value:nValue,
@@ -120,7 +133,7 @@ export default class ProfilePage extends Block {
                     name: 'email',
                     //value:'emailVal',
                 },
-                onChange:(e) => {
+                onChange:(e:MouseEvent) => {
                     const nValue = e.target.value
                     this.children.ChangeValue__email.setProps({
                         value:nValue,
@@ -154,7 +167,7 @@ export default class ProfilePage extends Block {
                     name: 'login',
                     //value:'LoginValue',
                 },
-                onChange:(e) => {
+                onChange:(e:MouseEvent) => {
                     const nValue = e.target.value
                     this.children.ChangeValue__login.setProps({
                         value:nValue,
@@ -189,7 +202,7 @@ export default class ProfilePage extends Block {
                     name: 'phone',
                     //value:'+7 (922) 243 23 23',
                     },
-                onChange:(e) => {
+                onChange:(e:MouseEvent) => {
                     const nValue = e.target.value
                     this.children.ChangeValue__phone.setProps({
                         value:nValue,
@@ -224,7 +237,7 @@ export default class ProfilePage extends Block {
                     name: 'display_name',
                     //value:'pseudiname',
                 },
-                onChange:(e) => {
+                onChange:(e:MouseEvent) => {
                     const nValue = e.target.value
                     this.children.ChangeValue__display_name.setProps({
                         value:nValue,
@@ -363,7 +376,7 @@ export default class ProfilePage extends Block {
                     name: 'oldpass',
                     //value:'pseudiname',
                 },
-                onChange:(e) => {
+                onChange:(e:MouseEvent) => {
                     const nValue = e.target.value
                     this.children.OldPassInput.setProps({
                         value:nValue,
@@ -383,7 +396,7 @@ export default class ProfilePage extends Block {
                     type: 'password',
                     name: 'password',
                 },
-                onChange:(e) => {
+                onChange:(e:MouseEvent) => {
                     const nValue = e.target.value
                     // this.children.NewPassInput.setProps({
                     //     value:nValue,
@@ -401,7 +414,7 @@ export default class ProfilePage extends Block {
                     type: 'password',
                     name: 'password_repeat',
                 },
-                onChange:(e) => {
+                onChange:(e:MouseEvent) => {
                      const nValue = e.target.value
                     // this.children.NewPassInputRepeat.setProps({
                     //     value:nValue,

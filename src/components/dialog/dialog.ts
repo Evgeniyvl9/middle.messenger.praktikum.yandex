@@ -1,7 +1,16 @@
-import Block from '/src/core/block.ts'
+import Block from '../../core/block.ts'
 import template from './dialog.hbs?raw'
+interface DialogProps {
+     [key: string]: unknown;
+    onClose?:Function;
+    onBlur?:Function;
+    onChange?:Function;
+    events?:{
+
+    }
+}
 export default class Dialog extends Block {
-    constructor(props:object){
+    constructor(props:DialogProps){
         super('div',{
             ...props,            
             events: {

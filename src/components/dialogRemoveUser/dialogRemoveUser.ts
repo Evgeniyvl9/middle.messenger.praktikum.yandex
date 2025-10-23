@@ -1,4 +1,4 @@
-import Block  from '/src/core/block'
+import Block  from '../../core/block'
 
 export default class DialogRemoveUser extends Block{
     constructor(props:object){
