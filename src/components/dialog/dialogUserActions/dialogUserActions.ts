@@ -2,9 +2,9 @@ import Dialog from '../dialog'
 interface DialogUserActionsProps {
     [key: string]: unknown;
     className?: string;
-    onClose?:Function;
-    onBlur?:Function;
-    onChange?:Function;
+    onClose?: () => void;
+    onBlur?: () => void;
+    onChange?: () => void;
     events?:{
         blur?:  Event,
         change?:Event

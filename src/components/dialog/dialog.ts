@@ -2,9 +2,9 @@ import Block from '../../core/block.ts'
 import template from './dialog.hbs?raw'
 interface DialogProps {
      [key: string]: unknown;
-    onClose?:Function;
-    onBlur?:Function;
-    onChange?:Function;
+    onClose?: () => void;
+    onBlur?: () => void;
+    onChange?: () => void;
     events?:{
 
     }

@@ -10,15 +10,15 @@ interface ProfilePageProps {
     tabindex:number;
     events: {
     //click: props.onClick,
-        blur:   Function;
-        change: Function;
+        blur:    () => void;
+        change:  () => void;
 
     };
     label:string;
     type: string;
     name: string;
     id:   string;
-    onChange: Function;
+    onChange:  () => void;
 }
 export default class ProfilePage extends Block {
     constructor(props:ProfilePageProps){
