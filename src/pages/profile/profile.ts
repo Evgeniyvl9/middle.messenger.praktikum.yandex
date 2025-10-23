@@ -22,9 +22,9 @@ interface ProfilePageProps {
     onChange:  () => void;
 }
 export default class ProfilePage extends Block {
-    // @ts-ignore
+    // @ts-expect-error
     public props:any; // или конкретный тип
-    // @ts-ignore
+    // @ts-expect-error
     public children:any; // или конкретный тип
     constructor(props:ProfilePageProps){
         //props = this.props
