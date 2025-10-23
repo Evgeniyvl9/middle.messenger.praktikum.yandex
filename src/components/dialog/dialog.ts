@@ -1,13 +1,11 @@
 import Block from '../../core/block.ts'
 import template from './dialog.hbs?raw'
 interface DialogProps {
-     [key: string]: unknown;
+    [key: string]: unknown;
     onClose?: () => void;
     onBlur?: () => void;
     onChange?: () => void;
-    events?:{
-
-    }
+    events?:object;
 }
 export default class Dialog extends Block {
     constructor(props:DialogProps){
