@@ -2,14 +2,14 @@
   "rules": {
     "no-unused-vars": 2,
     "max-len": [1, 100],
-    "max-params": [2, 3]
-    },
+    "max-params": [2, 3],
     "@typescript-eslint/no-unsafe-function-type": [
-      "error", 
-      { 
-        "allowObjectTypes": true 
-      }
-    ],  
+        "error", 
+        { 
+          "allowObjectTypes": true 
+        }
+      ]
+    },  
     "overrides": [
     {
       "files": ["**/*.ts", "**/*.tsx"],
