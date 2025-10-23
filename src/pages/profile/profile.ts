@@ -18,10 +18,16 @@ interface ProfilePageProps {
     type: string;
     name: string;
     id:   string;
+    props:object;
     onChange:  () => void;
 }
 export default class ProfilePage extends Block {
+    // @ts-ignore
+    public props:any; // или конкретный тип
+    // @ts-ignore
+    public children:any; // или конкретный тип
     constructor(props:ProfilePageProps){
+        //props = this.props
         super('div',{
              ...props,
             errors:{
@@ -38,7 +44,7 @@ export default class ProfilePage extends Block {
                 } ,
                 onChange:(e:MouseEvent) => {
                     console.log(inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/))
-                    const nValue = e.target.value
+                    const nValue = (e.target as HTMLInputElement).value
                     this.children.ChangeValue__first_name.setProps({
                         //error:inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/),
                         className:'qwe',
@@ -80,7 +86,7 @@ export default class ProfilePage extends Block {
                 },
                  onBlur: (e:MouseEvent) => {// не работает
                     console.log(e)
-                    //const value = e.target.value;
+                    //const value =  (e.target as HTMLInputElement).value;
                     //const error = '';
                     //if(value === "error") {
                     //    error = "Some error is happened."
@@ -100,7 +106,7 @@ export default class ProfilePage extends Block {
                     //value:'LastNameVal',
                 },
                 onChange:(e:MouseEvent) => {
-                    const nValue = e.target.value
+                    const nValue =  (e.target as HTMLInputElement).value
                     this.children.ChangeValue__second_name.setProps({
                         value:nValue,
                         error:inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/)
@@ -114,7 +120,7 @@ export default class ProfilePage extends Block {
                     })
                     // if(!inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/)){
                     //     this.children.ChangeValue__second_name.setProps({
-                    //         value:e.target.value,
+                    //         value: (e.target as HTMLInputElement).value,
                     //         error:true
                     //     });
 
@@ -134,7 +140,7 @@ export default class ProfilePage extends Block {
                     //value:'emailVal',
                 },
                 onChange:(e:MouseEvent) => {
-                    const nValue = e.target.value
+                    const nValue =  (e.target as HTMLInputElement).value
                     this.children.ChangeValue__email.setProps({
                         value:nValue,
                         error:inputValidator(e,/^[a-zA-Z0-9._-]+@[a-zA-Z]+\.[a-zA-Z]+$/)
@@ -148,7 +154,7 @@ export default class ProfilePage extends Block {
                     })
                     // if(!inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/)){
                     //     this.children.ChangeValue__email.setProps({
-                    //         value:e.target.value,
+                    //         value: (e.target as HTMLInputElement).value,
                     //         error:true
                     //     });
 
@@ -168,7 +174,7 @@ export default class ProfilePage extends Block {
                     //value:'LoginValue',
                 },
                 onChange:(e:MouseEvent) => {
-                    const nValue = e.target.value
+                    const nValue =  (e.target as HTMLInputElement).value
                     this.children.ChangeValue__login.setProps({
                         value:nValue,
                         error:inputValidator(e,/^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$/)
@@ -182,7 +188,7 @@ export default class ProfilePage extends Block {
                     })
                     // if(!inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/)){
                     //     this.children.ChangeValue__login.setProps({
-                    //         value:e.target.value,
+                    //         value: (e.target as HTMLInputElement).value,
                     //         error:true
                     //     });
 
@@ -203,7 +209,7 @@ export default class ProfilePage extends Block {
                     //value:'+7 (922) 243 23 23',
                     },
                 onChange:(e:MouseEvent) => {
-                    const nValue = e.target.value
+                    const nValue =  (e.target as HTMLInputElement).value
                     this.children.ChangeValue__phone.setProps({
                         value:nValue,
                         error:inputValidator(e,/^\+?\d{10,15}$/)
@@ -217,7 +223,7 @@ export default class ProfilePage extends Block {
                     })
                     // if(!inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/)){
                     //     this.children.ChangeValue__phone.setProps({
-                    //         value:e.target.value,
+                    //         value: (e.target as HTMLInputElement).value,
                     //         error:true
                     //     });
 
@@ -238,7 +244,7 @@ export default class ProfilePage extends Block {
                     //value:'pseudiname',
                 },
                 onChange:(e:MouseEvent) => {
-                    const nValue = e.target.value
+                    const nValue =  (e.target as HTMLInputElement).value
                     this.children.ChangeValue__display_name.setProps({
                         value:nValue,
                         error:inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/)
@@ -252,7 +258,7 @@ export default class ProfilePage extends Block {
                     })
                     // if(!inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/)){
                     //     this.children.ChangeValue__display_name.setProps({
-                    //         value:e.target.value,
+                    //         value: (e.target as HTMLInputElement).value,
                     //         error:true
                     //     });
 
@@ -377,7 +383,7 @@ export default class ProfilePage extends Block {
                     //value:'pseudiname',
                 },
                 onChange:(e:MouseEvent) => {
-                    const nValue = e.target.value
+                    const nValue =  (e.target as HTMLInputElement).value
                     this.children.OldPassInput.setProps({
                         value:nValue,
                         error:inputValidator(e,/^[A-ZА-ЯЁ][a-zA-Zа-яёA-ZА-ЯЁ-]*$/)
@@ -397,7 +403,7 @@ export default class ProfilePage extends Block {
                     name: 'password',
                 },
                 onChange:(e:MouseEvent) => {
-                    const nValue = e.target.value
+                    const nValue =  (e.target as HTMLInputElement).value
                     // this.children.NewPassInput.setProps({
                     //     value:nValue,
                     //     error:inputValidator(e,/^(?=.*[A-Z])(?=.*\d).{8,40}$/)
@@ -415,7 +421,7 @@ export default class ProfilePage extends Block {
                     name: 'password_repeat',
                 },
                 onChange:(e:MouseEvent) => {
-                     const nValue = e.target.value
+                     const nValue =  (e.target as HTMLInputElement).value
                     // this.children.NewPassInputRepeat.setProps({
                     //     value:nValue,
                     //     error:inputValidator(e,/^(?=.*[A-Z])(?=.*\d).{8,40}$/)
