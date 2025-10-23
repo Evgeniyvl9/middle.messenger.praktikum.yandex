@@ -27,8 +27,8 @@ interface ProfilePageProps {
 
 
 export default class ProfilePage extends Block {
-    public props:ProfilePageProps; // или конкретный тип
-    public children:ProfilePageProps; // или конкретный тип
+    //public props:ProfilePageProps; // или конкретный тип
+    //public children:ProfilePageProps; // или конкретный тип
     constructor(props:ProfilePageProps){
         //props = this.props
         super('div',{

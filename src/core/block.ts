@@ -122,7 +122,7 @@ export default class Block {
     return true;
   }
 
-  setProps = (nextProps:EventBusType) => {
+  setProps = (nextProps) => {
     if (!nextProps) {
       return;
     }
@@ -167,7 +167,7 @@ export default class Block {
     const template = Handlebars.compile(this.render());
     fragment.innerHTML = template(propsAndStubs);
 
-    Object.values(this.children).forEach((child:string) => {
+    Object.values(this.children).forEach((child) => {
       if (Array.isArray(child)) {
         child.forEach((component) => {
           const stub = fragment.content.querySelector(

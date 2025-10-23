@@ -27,6 +27,7 @@ interface ChatListPageProps {
     newMessageContent:{
         text:string
     },
+    
     children:Record<string, unknown>;
     userActionsShow:boolean;
     showFileAddDialog:boolean;
@@ -34,8 +35,8 @@ interface ChatListPageProps {
 type Children = Record<string, { children: Record<string, { setProps: (props: unknown) => void }> }>;
 
 export default class ChatListPage extends Block{
-    public props: ChatListPageProps;
-    public children: Children = {} as Children; // или конкретный тип
+    //public declare props: ChatListPageProps;
+    //public children: Children = {} as Children; // или конкретный тип
 
     //public setProps: (nextProps:unknown)=>void;
 
@@ -74,7 +75,7 @@ export default class ChatListPage extends Block{
             events:{
                 click:(e:Event) => {
                     if ((e.target as HTMLElement).closest('.chat-list__element')) {
-                        const k =  this.props.chatSelect 
+                        let k =  this.props.chatSelect 
                         k.selectedStatus = true
                         this.setProps({
                             chatSelect: k
@@ -356,7 +357,7 @@ export default class ChatListPage extends Block{
                 })
             })
         })
-        this.props = props
+        //this.props = props
         //this.children = children
     }
     render(){
