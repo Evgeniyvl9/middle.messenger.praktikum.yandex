@@ -3,6 +3,8 @@ import { nanoid } from "nanoid";
 import Handlebars from "handlebars";
 
 // Нельзя создавать экземпляр данного класса
+type EventBusType = Record<string, unknown>; // только функции
+
 export default class Block {
   static EVENTS = {
     INIT: "init",
@@ -12,7 +14,7 @@ export default class Block {
   };
 
   _element = null;
-  _meta = null;
+  _meta = {};
   _id = nanoid(6);
 
   /** JSDoc
@@ -21,6 +23,11 @@ export default class Block {
    *
    * @returns {void}
    */
+  public eventBus:unknown;
+  public children;
+  public props;
+  //public _getChildrenAndProps:unknown;
+  //public _makePropsProxy:unknown;
   constructor(tagName = "div", propsWithChildren = {}) {
     const eventBus = new EventBus();
     this.eventBus = () => eventBus;
@@ -39,7 +46,7 @@ export default class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _registerEvents(eventBus) {
+  _registerEvents(eventBus: eventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -67,7 +74,7 @@ export default class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  _getChildrenAndProps(propsAndChildren) {
+  _getChildrenAndProps(propsAndChildren:EventBusType) {
     const children = {};
     const props = {};
 
@@ -103,7 +110,7 @@ export default class Block {
     this._eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  _componentDidUpdate(oldProps, newProps) {
+  _componentDidUpdate(oldProps:EventBusType, newProps:EventBusType) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
@@ -115,7 +122,7 @@ export default class Block {
     return true;
   }
 
-  setProps = (nextProps) => {
+  setProps = (nextProps:EventBusType) => {
     if (!nextProps) {
       return;
     }
@@ -160,7 +167,7 @@ export default class Block {
     const template = Handlebars.compile(this.render());
     fragment.innerHTML = template(propsAndStubs);
 
-    Object.values(this.children).forEach((child) => {
+    Object.values(this.children).forEach((child:string) => {
       if (Array.isArray(child)) {
         child.forEach((component) => {
           const stub = fragment.content.querySelector(
