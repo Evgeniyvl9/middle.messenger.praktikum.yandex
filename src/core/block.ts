@@ -4,7 +4,9 @@ import Handlebars from "handlebars";
 
 // Нельзя создавать экземпляр данного класса
 type EventBusType = Record<string, unknown>; // только функции
-
+interface PropsBlock {
+  [key: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+}
 export default class Block {
   static EVENTS = {
     INIT: "init",
@@ -14,7 +16,7 @@ export default class Block {
   };
 
   _element = null;
-  _meta = {};
+  _meta:PropsBlock = {};
   _id = nanoid(6);
 
   /** JSDoc
@@ -24,11 +26,11 @@ export default class Block {
    * @returns {void}
    */
   public eventBus:unknown;
-  public children;
-  public props;
+  public children:PropsBlock;
+  public props:PropsBlock;
   //public _getChildrenAndProps:unknown;
   //public _makePropsProxy:unknown;
-  constructor(tagName = "div", propsWithChildren = {}) {
+  constructor(tagName = "div", propsWithChildren:PropsBlock = {}) {
     const eventBus = new EventBus();
     this.eventBus = () => eventBus;
 
@@ -46,7 +48,7 @@ export default class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _registerEvents(eventBus: eventBus) {
+  _registerEvents(eventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -75,8 +77,8 @@ export default class Block {
   }
 
   _getChildrenAndProps(propsAndChildren:EventBusType) {
-    const children = {};
-    const props = {};
+    const children:PropsBlock = {};
+    const props:PropsBlock = {};
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (Array.isArray(value)) {
@@ -207,7 +209,7 @@ export default class Block {
     return this.element;
   }
 
-  _makePropsProxy(props) {
+  _makePropsProxy(props:PropsBlock) {
     const eventBus = this.eventBus();
     const emitBind = eventBus.emit.bind(eventBus);
 
