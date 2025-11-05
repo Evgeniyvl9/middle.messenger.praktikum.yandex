@@ -1,8 +1,10 @@
 import EventBus from "./eventBus";
 import { nanoid } from "nanoid";
 import Handlebars from "handlebars";
+interface PropsBlock {
+  [key: string]: any;
 
-// Нельзя создавать экземпляр данного класса
+}
 type EventBusType = Record<string, unknown>; // только функции
 
 export default class Block {
@@ -46,7 +48,7 @@ export default class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _registerEvents(eventBus: eventBus) {
+  _registerEvents(eventBus:EventBus<string>) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -64,7 +66,7 @@ export default class Block {
 
     if (typeof props.attrs === "object") {
       Object.entries(props.attrs).forEach(([attrName, attrValue]) => {
-        this._element.setAttribute(attrName, attrValue);
+        this._element?.setAttribute(attrName, attrValue);
       });
     }
   }
@@ -75,8 +77,8 @@ export default class Block {
   }
 
   _getChildrenAndProps(propsAndChildren:EventBusType) {
-    const children = {};
-    const props = {};
+    const children:Record<string, any> = {};
+    const props:Record<string, any> = {};
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (Array.isArray(value)) {
@@ -106,9 +108,7 @@ export default class Block {
 
   componentDidMount() {}
 
-  dispatchComponentDidMount() {
-    this._eventBus().emit(Block.EVENTS.FLOW_CDM);
-  }
+
 
   _componentDidUpdate(oldProps:EventBusType, newProps:EventBusType) {
     const response = this.componentDidUpdate(oldProps, newProps);
@@ -207,11 +207,11 @@ export default class Block {
     return this.element;
   }
 
-  _makePropsProxy(props) {
+  _makePropsProxy(props:EventBusType) {
     const eventBus = this.eventBus();
     const emitBind = eventBus.emit.bind(eventBus);
 
-    return new Proxy(props as unknown, {
+    return new Proxy(props as EventBusType, {
       get(target, prop) {
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;

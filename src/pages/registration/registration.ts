@@ -1,6 +1,6 @@
-import Block    from  '/src/core/block.ts'
-import Button   from  '/src/components/button/button'
-import Input    from  '/src/components/input/input'
+import Block    from  '../../core/block'
+import Button   from  '../../components/button/button'
+import Input    from  '../../components/input/input'
 
 export default class Registration extends Block {
     constructor(){

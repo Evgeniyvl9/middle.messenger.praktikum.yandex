@@ -1,8 +1,13 @@
-import Block    from '/src/core/block'
-import Button   from  '/src/components/button/button'
-import Input    from  '/src/components/input/input'
+import Block    from  '../../core/block'
+import Button   from  '../../components/button/button'
+import Input    from  '../../components/input/input'
+interface LoginPageProps {
+  onChange?: (event: Event) => void;
+  onClick?: (event: Event) => void;
+  [key: string]: unknown; 
+}
 export default class Login extends Block{
-    constructor(props:unknown){
+    constructor(props:LoginPageProps){
         super('div',{
             ...props,
             InputLogin:new Input({

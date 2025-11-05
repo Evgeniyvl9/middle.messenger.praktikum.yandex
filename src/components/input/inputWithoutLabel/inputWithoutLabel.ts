@@ -1,6 +1,11 @@
 import Block from '../../../core/block'
+interface InputWithoutLabelProps {
+  onChange?: (event: Event) => void;
+  onClick?: (event: Event) => void;
+  [key: string]: unknown; 
+}
 export default class InputWithoutLabel extends Block{
-    constructor(props){
+    constructor(props:InputWithoutLabelProps){
         super('input',
             {
                 ...props,
