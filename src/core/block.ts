@@ -27,6 +27,7 @@ export default class Block {
   public eventBus:() => EventBus<string>;
   public children:PropsBlock;
   public props:PropsBlock = {};
+  public id:string = nanoid(6);
   //public _getChildrenAndProps:unknown;
   //public _makePropsProxy:unknown;
   constructor(tagName = "div", propsWithChildren:PropsBlock = {}) {

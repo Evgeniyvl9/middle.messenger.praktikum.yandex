@@ -1,8 +1,11 @@
 import Block from "./block";
 import Handlebars, { HelperOptions } from "handlebars";
-
+interface PropsBlock {
+   [key: string]:  any;    // eslint-disable-line     @typescript-eslint/no-explicit-any
+}
 interface BlockConstructable<P = PropsBlock> {
   new (props: P): Block;
+  
 }
 
 export default function registerComponent<Props extends PropsBlock>(
@@ -28,12 +31,15 @@ export default function registerComponent<Props extends PropsBlock>(
        * Костыль для того, чтобы передавать переменные
        * внутрь блоков вручную подменяя значение
        */
-      (Object.keys(hash) as unknown).forEach((key: keyof Props) => {
+      (Object.keys(hash) as string[]).forEach((key: keyof Props) => {
         if (this[key] && typeof this[key] === "string") {
-          hash[key] = hash[key].replace(
-            new RegExp(`{{${key}}}`, "i"),
-            this[key],
-          );
+          if(typeof key === 'string'){
+            hash[key] = hash[key].replace(
+              new RegExp(`{{${key}}}`, "i"),
+              this[key],
+            );
+          }
+
         }
       });
 
