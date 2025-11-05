@@ -120,7 +120,12 @@ export default class Block {
   }
 
   componentDidUpdate(oldProps?:EventBusType, newProps?:EventBusType) {
-    return true;
+    if(oldProps || newProps){
+      return true;
+    }
+    else{
+        return true;  
+    }
   }
 
   setProps = (nextProps: PropsBlock) => {
