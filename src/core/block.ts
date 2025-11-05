@@ -6,7 +6,9 @@ interface PropsBlock {
 
 }
 type EventBusType = Record<string, unknown>; // только функции
-
+interface PropsBlock {
+  [key: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+}
 export default class Block {
   static EVENTS = {
     INIT: "init",
@@ -16,7 +18,7 @@ export default class Block {
   };
 
   _element = null;
-  _meta = {};
+  _meta:PropsBlock = {};
   _id = nanoid(6);
 
   /** JSDoc
@@ -26,11 +28,11 @@ export default class Block {
    * @returns {void}
    */
   public eventBus:unknown;
-  public children;
-  public props;
+  public children:PropsBlock;
+  public props:PropsBlock;
   //public _getChildrenAndProps:unknown;
   //public _makePropsProxy:unknown;
-  constructor(tagName = "div", propsWithChildren = {}) {
+  constructor(tagName = "div", propsWithChildren:PropsBlock = {}) {
     const eventBus = new EventBus();
     this.eventBus = () => eventBus;
 
