@@ -2,13 +2,11 @@ import EventBus from "./eventBus";
 import { nanoid } from "nanoid";
 import Handlebars from "handlebars";
 interface PropsBlock {
-  [key: string]: any;
+   [key: string]: unknown; 
 
 }
 type EventBusType = Record<string, unknown>; // только функции
-interface PropsBlock {
-  [key: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-}
+
 export default class Block {
   static EVENTS = {
     INIT: "init",
