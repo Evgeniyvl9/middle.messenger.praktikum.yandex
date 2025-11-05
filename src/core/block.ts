@@ -77,8 +77,8 @@ export default class Block {
   }
 
   _getChildrenAndProps(propsAndChildren:EventBusType) {
-    const children:Record<string, any> = {};
-    const props:Record<string, any> = {};
+    const children:Record<string, unknown> = {};
+    const props:Record<string, unknown> = {};
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (Array.isArray(value)) {
