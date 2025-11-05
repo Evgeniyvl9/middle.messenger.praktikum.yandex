@@ -2,10 +2,10 @@ import EventBus from "./eventBus";
 import { nanoid } from "nanoid";
 import Handlebars from "handlebars";
 interface PropsBlock {
-   [key: string]: unknown; 
-
+  // @ts-expect-error
+   [key: string]: any; 
 }
-type EventBusType = Record<string, unknown>; // только функции
+type EventBusType = Record<string, unknown>; 
 
 export default class Block {
   static EVENTS = {
