@@ -34,17 +34,17 @@
 
 
 export default class EventBus<E extends string> {
-  private listeners: Record<string, Function[]>;
+  private listeners: Record<string, ((...args: unknown[]) => void)[]>;
   constructor() {
     this.listeners = {};
   }
-  on(event: string, callback: Function) {
+  on(event: string, callback: (...args: unknown[]) => void): void {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
     this.listeners[event].push(callback);
   }
-  off(event: string, callback: Function) {
+  off(event: string, callback: (...args: unknown[]) => void): void {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }
