@@ -2,8 +2,7 @@ import EventBus from "./eventBus";
 import { nanoid } from "nanoid";
 import Handlebars from "handlebars";
 interface PropsBlock {
-  // @ts-expect-error
-   [key: string]: any; 
+   [key: string]: any;    // eslint-disable-line     @typescript-eslint/no-explicit-any
 }
 type EventBusType = Record<string, unknown>; 
 
