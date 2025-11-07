@@ -129,7 +129,7 @@ function navigate(page: string) {
     const [source, context] = pages[page as keyof typeof pages];
    
     if (typeof source === "function") {
-      renderDOM(new (source as new (props: any) => Block)(context));
+      renderDOM(new (source as new (props: unknown) => Block)(context));
       return;
     }
 
