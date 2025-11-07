@@ -124,7 +124,9 @@ Object.entries(Components).forEach(([name, template]) => {
 
 
 function navigate(page: string) {
-  const [source, context] = pages[page];
+   if (page in pages) {
+    const [source, context] = pages[page as keyof typeof pages];
+   }
   if (typeof source === "function") {
     renderDOM(new source(context));
     return;

@@ -1,7 +1,7 @@
 import Block from '../../../core/block'
 interface InputWithoutLabelProps {
-  onChange?: (event: Event) => void;
-  onClick?: (event: Event) => void;
+  onChange?: (event: MouseEvent) => void;
+  onClick?: (event: MouseEvent) => void;
   [key: string]: unknown; 
 }
 export default class InputWithoutLabel extends Block{

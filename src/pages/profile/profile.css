@@ -4,7 +4,6 @@
   width: 100vw;
   height: 100vh;
 }
-
 .profile-page__container .profile-page__back {
   background: var(--background-color-second);
   height: 100%;
@@ -12,16 +11,14 @@
   justify-content: center;
   align-items: center;
 }
-
 .profile-page__container .profile-page__back .back__link {
   display: block;
   background-color: var(--background-color);
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-image: url("/assets/back.png");
+  background-image: url(/assets/back.png);
 }
-
 .profile-page__container .profile-page__info__block {
   display: flex        ;
   justify-content: center;
@@ -29,18 +26,15 @@
   align-items: center;
   gap: 60px;
 }
-
 .profile-page__container .profile-page__info__block .info_table .r {
   display: flex;
   width: 100%;
   padding: 10px 0;
   justify-content: space-between;
 }
-
 .profile-page__container .profile-page__info__block .info_table .r + .r {
   border-top: var(--border-base);
 }
-
 .profile-page__container .profile-page__info__block .info_table .r .lable {
   font-weight: 600;
   font-size: 13px;
@@ -48,7 +42,6 @@
   letter-spacing: 0%;
   color: var(--text-color);
 }
-
 .profile-page__container .profile-page__info__block .info_table .r .value {
   font-weight: 500;
   font-size: 13px;
@@ -57,7 +50,6 @@
   text-align: right;
   color: var(--text-color-second);
 }
-
 .profile-page__container .profile-page__info__block .info-block__top {
   display: flex            ;
   justify-content: center;
@@ -65,13 +57,11 @@
   align-items: center;
   gap: 21px;
 }
-
 .profile-page__container .profile-page__info__block .info-block__top .info-block__avatar {
   width: 130px;
   height: 130px;
   border-radius: 50%;
 }
-
 .profile-page__container .profile-page__info__block .info-block__top .info-block__name {
   font-weight: 600;
   font-size: 16px;
@@ -80,29 +70,23 @@
   text-align: center;
   color: var(--text-color);
 }
-
 .profile-page__container .profile-page__info__block .info-block__middle {
   width: 500px;
 }
-
 .profile-page__container .profile-page__info__block .info-block__middle .info_table .r .value input {
   border: none;
   text-align: right;
 }
-
 .profile-page__container .profile-page__info__block .info-block__bottom {
   width: 500px;
 }
-
 .profile-page__container .profile-page__info__block .info-block__bottom .info_table .r .lable a {
   color: var(--text-color-blue);
   text-decoration: none;
 }
-
 .profile-page__container .profile-page__info__block .info-block__bottom .info_table .r .lable a.exit {
   color: var(--error-text-color);
 }
-
 .profile-page__container .profile-page__info__block .info-block__bottom .info_table .r .lable button {
   border: none;
   padding: 0;
