@@ -1,3 +1,4 @@
+import Block    from  './core/block.ts'
 import './assets/normalize.css'
 import './assets/style.less'
 import Handlebars from 'handlebars';
@@ -22,8 +23,8 @@ import avatar from './assets/avatar.jpg'
 
 
 const pages = {
-  'login': [ Pages.Login ],
-  'registration' : [Pages.Registration],
+  'login': [ Pages.Login,{} ],
+  'registration' : [Pages.Registration,{}],
   'chat-list'    : [Pages.ChatListPage,{
         chats:[
           {name:'Андрей', 
@@ -45,7 +46,7 @@ const pages = {
         showDialogRemoveUser:false,
   }],
 
-  'profile': [Pages.ProfilePage],
+  'profile': [Pages.ProfilePage,{}],
   // 'profile': [Pages.ProfilePage,{
   //   profileInfo:{
   //     avatar:avatar,
@@ -109,7 +110,7 @@ const pages = {
   // }
   // ],
 
-   'nav': [ Pages.Navigate ],
+   'nav': [ Pages.Navigate ,{}],
   // '404': [ Pages.Page404 ],
   // '500': [ Pages.Page500 ]
 };
@@ -126,23 +127,26 @@ Object.entries(Components).forEach(([name, template]) => {
 function navigate(page: string) {
    if (page in pages) {
     const [source, context] = pages[page as keyof typeof pages];
-   }
-  if (typeof source === "function") {
-    renderDOM(new source(context));
-    return;
+   
+    if (typeof source === "function") {
+      renderDOM(new (source as new (props: any) => Block)(context));
+      return;
+    }
+
+    const container = document.getElementById("app")!;
+
+    const temlpatingFunction = Handlebars.compile(source);
+    container.innerHTML = temlpatingFunction(context);
   }
-
-  const container = document.getElementById("app")!;
-
-  const temlpatingFunction = Handlebars.compile(source);
-  container.innerHTML = temlpatingFunction(context);
 }
 
 document.addEventListener("DOMContentLoaded", () => navigate("nav"));
 
 document.addEventListener("click", (e) => {
-  const page = e.target.getAttribute("page");
-  if (page) {
+  const target = e.target;
+  if (!target) return;
+  
+  const page = (target as HTMLElement).getAttribute("page");  if (page) {
     navigate(page);
 
     e.preventDefault();

@@ -7,7 +7,7 @@ interface LoginPageProps {
   [key: string]: unknown; 
 }
 export default class Login extends Block{
-    constructor(props:LoginPageProps){
+    constructor(props:LoginPageProps ){
         super('div',{
             ...props,
             InputLogin:new Input({
