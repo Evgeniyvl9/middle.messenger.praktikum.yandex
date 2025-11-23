@@ -1,6 +1,6 @@
 import Block    from  './core/block.ts'
 import './assets/normalize.css'
-import './assets/style.less'
+//import './assets/style.less'
 import Handlebars from 'handlebars';
 import * as Pages  from './pages'
 import * as Components from './components'
