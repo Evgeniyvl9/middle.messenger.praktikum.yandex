@@ -1,2 +1,2 @@
-import './dialogRemoveUser.less'
+import './dialogRemoveUser.css'
 export {default as DialogRemoveUser} from './dialogRemoveUser.ts'

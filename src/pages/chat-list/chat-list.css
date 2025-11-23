@@ -3,38 +3,33 @@
   --chat-list-bg: #FBFBFB;
   --secont-chat-bg: #E4EDFD;
   --primory-chat-bg: var(--chat-list-bg);
-  --text-color-second: #999;
+  --text-color-second: #999999;
   --text-color: #1E1E1E;
-  --background-color-light: #fff;
+  --background-color-light: #ffffff;
   --box-shadow: 0px 0px 6px 0px #00000024;
 }
-
 .chat-list__container {
   display: grid;
   grid-template-columns: 310px 1fr;
   width: 100vw;
   height: 100vh;
 }
-
 .chat-list__container .chat-list {
   background-color: var(--chat-list-bg);
   height: 100%;
   border-right: var(--chat-list-border);
   padding: 0 10px;
 }
-
 .chat-list__container .chat-list .chat-list__top {
   border-bottom: var(--chat-list-border);
-  padding: 0 0 12px;
+  padding: 0 0 12px 0;
 }
-
 .chat-list__container .chat-list .chat-list__top .prof-link {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   height: 40px;
 }
-
 .chat-list__container .chat-list .chat-list__top .prof-link a {
   font-weight: 500;
   font-size: 12px;
@@ -46,7 +41,6 @@
   display: flex;
   gap: 7px;
 }
-
 .chat-list__container .chat-list .chat-list__top .chat-list__search input {
   width: 100%;
   height: 32px;
@@ -56,14 +50,12 @@
   border: none;
   text-align: center;
 }
-
 .chat-list__container .chat-list .chat-list__top .chat-list__search input[type='text'],
 .chat-list__container .chat-list .chat-list__top .chat-list__search input[type="password"],
 .chat-list__container .chat-list .chat-list__top .chat-list__search input:focus-visible {
   outline: none;
   border: none;
 }
-
 .chat-list__container .chat-list .chat-list__middle .chat-list__element {
   display: grid;
   grid-template-columns: 47px 1fr 30px;
@@ -71,12 +63,10 @@
   padding: 12px 0;
   border-bottom: var(--chat-list-border);
 }
-
 .chat-list__container .chat-list .chat-list__middle .chat-list__element .element__avatar {
   width: 47px;
   height: 47px;
 }
-
 .chat-list__container .chat-list .chat-list__middle .chat-list__element .element__content .element-content__user_name {
   font-weight: 600;
   font-size: 13px;
@@ -85,7 +75,6 @@
   color: var(--text-color);
   margin-bottom: 6px;
 }
-
 .chat-list__container .chat-list .chat-list__middle .chat-list__element .element__content .element_content__last_mess {
   display: -webkit-box;
   overflow: hidden;
@@ -95,7 +84,6 @@
   font-size: 12px;
   color: var(--text-color-second);
 }
-
 .chat-list__container .chat-list .chat-list__middle .chat-list__element .element__info {
   display: flex;
   flex-direction: column;
@@ -103,13 +91,11 @@
   justify-content: space-around;
   align-items: flex-end;
 }
-
 .chat-list__container .chat-list .chat-list__middle .chat-list__element .element__info .element-info__time {
   font-weight: 500;
   font-size: 9px;
   text-align: right;
 }
-
 .chat-list__container .chat-list .chat-list__middle .chat-list__element .element__info .element-info__no-read-count {
   height: 20px;
   padding: 2px 8px;
@@ -122,11 +108,9 @@
   width: max-content;
   margin-right: 0;
 }
-
 .chat-list__container .chat-list .chat-list__middle .chat-list__element .element__info .element-info__no-read-count:empty {
   background: none;
 }
-
 .chat-list__container .chat-detail {
   height: 100%;
   display: flex;
@@ -135,7 +119,6 @@
   flex-direction: column;
   justify-content: space-between;
 }
-
 .chat-list__container .chat-detail .chat-detail__info {
   height: 54px;
   border-bottom: var(--chat-list-border);
@@ -143,33 +126,27 @@
   justify-content: space-between;
   align-items: center;
 }
-
 .chat-list__container .chat-detail .chat-detail__info .user_info {
   display: flex;
   gap: 20px;
   align-items: center;
 }
-
 .chat-list__container .chat-detail .chat-detail__info .user_info .avatar {
   border-radius: 50%;
   overflow: hidden;
 }
-
 .chat-list__container .chat-detail .chat-detail__info .user_info .avatar .element__avatar {
   width: 37px;
   height: 37px;
 }
-
 .chat-list__container .chat-detail .chat-detail__info .user_info .user_name {
   font-size: 13px;
   font-weight: 600;
   color: var(--text-color);
 }
-
 .chat-list__container .chat-detail .chat-detail__info .drop_menu_wrap {
   position: relative;
 }
-
 .chat-list__container .chat-detail .chat-detail__info .drop_menu_wrap .drop_menu_show-button {
   width: 30px;
   height: 30px;
@@ -179,7 +156,6 @@
   align-content: center;
   position: relative;
 }
-
 .chat-list__container .chat-detail .chat-detail__info .drop_menu_wrap .drop-menu {
   position: absolute;
   right: 0;
@@ -194,7 +170,6 @@
   flex-direction: column;
   justify-content: space-between;
 }
-
 .chat-list__container .chat-detail .chat-detail__info .drop_menu_wrap .drop-menu .drop_menu__element {
   cursor: pointer;
   padding: 3px 0;
@@ -203,7 +178,6 @@
   color: var(--text-color);
   border: none;
 }
-
 .chat-list__container .chat-detail .chat-detail__list {
   display: flex;
   flex-direction: column;
@@ -211,7 +185,6 @@
   justify-content: flex-end;
   padding-bottom: 40px;
 }
-
 .chat-list__container .chat-detail .chat-detail__list .chat_mess {
   padding: 11px;
   font-size: 12px;
@@ -222,16 +195,13 @@
   align-self: flex-start;
   color: var(--text-color);
 }
-
 .chat-list__container .chat-detail .chat-detail__list .chat_mess.primory_chat_mess {
   background-color: var(--primory-chat-bg);
 }
-
 .chat-list__container .chat-detail .chat-detail__list .chat_mess.second_chat_mess {
   align-self: flex-end;
   background-color: var(--secont-chat-bg);
 }
-
 .chat-list__container .chat-detail .chat-detail__mess {
   height: min-content;
   border-top: var(--chat-list-border);
@@ -240,18 +210,15 @@
   grid-template-columns: 50px 1fr;
   align-items: center;
 }
-
 .chat-list__container .chat-detail .chat-detail__mess .file_add_button {
   display: flex;
   align-items: center;
 }
-
 .chat-list__container .chat-detail .chat-detail__mess .new_message_form {
   display: grid;
   grid-template-columns: 1fr 30px ;
   column-gap: 16px;
 }
-
 .chat-list__container .chat-detail .chat-detail__mess .new_message_form input[name="message"] {
   height: 32px;
   background-color: #EFEFEF;
@@ -260,7 +227,6 @@
   border: none;
   padding-left: 20px;
 }
-
 .chat-list__container .chat-detail .chat-detail__mess .new_message_form .send_message_button button {
   width: 32px;
   height: 32px;
