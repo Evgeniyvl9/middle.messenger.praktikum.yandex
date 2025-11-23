@@ -22,7 +22,7 @@
 }
 .chat-list__container .chat-list .chat-list__top {
   border-bottom: var(--chat-list-border);
-  padding: 0 0 12px 0;
+  padding: 0 0 12px;
 }
 .chat-list__container .chat-list .chat-list__top .prof-link {
   display: flex;
