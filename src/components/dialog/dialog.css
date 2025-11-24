@@ -32,11 +32,11 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.dialog-container .dialog.error .dialog__title {
-  color: var(--error-text-color);
-}
 .dialog-container .dialog .dialog__title {
   text-align: center;
+}
+.dialog-container .dialog.error .dialog__title {
+  color: var(--error-text-color);
 }
 .dialog-container .dialog .dialog__content .input-wrap input {
   font-weight: 600;
