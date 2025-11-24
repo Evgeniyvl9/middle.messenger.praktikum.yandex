@@ -1,0 +1,62 @@
+.dialog-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dialog-container .dialog_shirma {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 101;
+  background-color: var(--background-color-dark);
+  opacity: 0.6;
+}
+.dialog-container .dialog {
+  position: relative;
+  z-index: 102;
+  width: 340px;
+  min-height: 257px;
+  background-color: var(--background-color-light);
+  box-shadow: var(--box-shadow);
+  border-radius: 12px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.dialog-container .dialog .dialog__title {
+  text-align: center;
+}
+.dialog-container .dialog.error .dialog__title {
+  color: var(--error-text-color);
+}
+.dialog-container .dialog .dialog__content .input-wrap input {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 13px;
+  letter-spacing: 0%;
+}
+.dialog-container .dialog .dialog__actions .blue {
+  width: 100%;
+}
+.dialog-container .dialog .file_name {
+  text-align: center;
+  color: var(--text-color-second);
+}
+.dialog-container .dialog .error_empty {
+  color: var(--error-text-color);
+  font-size: 11px;
+  text-align: center;
+  position: absolute;
+  bottom: 13px;
+  width: 100%;
+  left: 0;
+}

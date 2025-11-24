@@ -1,3 +1,3 @@
-import './chat-list.less'
+import './chat-list.css'
 
-export {default as ChatList} from './chat-list.hbs?raw'
+export {default as ChatListPage} from './chat-list.ts'

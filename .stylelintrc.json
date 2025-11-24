@@ -1,0 +1,15 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "selector-class-pattern": null,
+    "alpha-value-notation": null,
+    "declaration-empty-line-before": null,
+    "rule-empty-line-before": null,
+    "color-hex-length": null,
+    "color-function-notation": null
+  },
+  "ignoreFiles": [
+    "build/*",
+    ".stylelintrc.json"
+  ]
+} 

@@ -1,0 +1,46 @@
+.registration-form-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.registration-form-container .registration-form {
+  width: 340px;
+  border-radius: 12px;
+  opacity: 1;
+  padding: 30px 20px;
+  box-shadow: var(--box-shadow);
+}
+.registration-form-container .registration-form form {
+  height: 100%;
+  position: relative;
+  padding-bottom: 120px;
+}
+.registration-form-container .registration-form form .inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.registration-form-container .registration-form form .actions {
+  display: flex                ;
+  gap: 20px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.registration-form-container .registration-form form .actions > * {
+  width: 100%;
+}
+.registration-form-container .registration-form form .actions a._link {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 11px;
+  letter-spacing: 0%;
+  color: var(--text-color-blue);
+  text-decoration: none;
+  width: max-content;
+}

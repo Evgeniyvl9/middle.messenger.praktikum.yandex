@@ -1,3 +1,4 @@
+/* 
 :root{
     --background-color:#3369F3;
     --background-color-second:#EFEFEF;
@@ -12,17 +13,15 @@
     --border-base:1px solid #EAEAEA;
 
     
-}    
-*{ 
-    font-family: Arial;
+}     
+    */
+* {
+  font-family: Arial, sans-serif;
 }
-
 h1 {
-   
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 20px;
-    letter-spacing: 0%;
-    text-align: center;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  text-align: center;
 }
-

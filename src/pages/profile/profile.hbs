@@ -19,7 +19,12 @@
                 {{#each profileInfo.visibleParams }}
                 <div class="r">
                     <div class="lable">{{label}}</div>
-                    <div class="value">{{value}}</div>
+                    <div class="value">
+                    {{#if profileRedactor}}
+                        {{{ChangeValue}}}
+                    {{/if}}
+                     {{value}}
+                    </div>
                 </div>
                 {{/each}}
             </div>

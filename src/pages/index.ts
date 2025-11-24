@@ -1,6 +1,6 @@
 export {Login}        from './login' 
 export {Registration} from './registration'
-export {ChatList}     from './chat-list'
+export {ChatListPage}     from './chat-list'
 export {Navigate}     from './navigate'
 export {ProfilePage}  from './profile'
 export {Page500}      from './page500'

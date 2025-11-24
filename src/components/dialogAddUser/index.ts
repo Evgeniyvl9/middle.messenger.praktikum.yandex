@@ -1,2 +1,2 @@
-import './dialogAddUser.less'
-export {default as DialogAddUser} from './dialogAddUser.hbs?raw'
+import './dialogAddUser.css'
+export {default as DialogAddUser} from './dialogAddUser'

@@ -1,2 +1,2 @@
-import './registration.less'
-export { default as Registration } from './registration.hbs?raw';
+import './registration.css'
+export { default as Registration } from './registration.ts';
