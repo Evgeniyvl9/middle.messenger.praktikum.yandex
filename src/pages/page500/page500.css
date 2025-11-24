@@ -1,0 +1,30 @@
+.page500-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.page500-container .page500__content {
+  text-align: center;
+}
+.page500-container .page500__content h1 {
+  text-align: center;
+  font-weight: 500;
+  font-size: 40px;
+}
+.page500-container .page500__content .sub-head {
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--text-color);
+  margin-top: 20px;
+}
+.page500-container .page500__content .back-link {
+  margin-top: 70px;
+  font-weight: 500;
+  font-size: 11px;
+  color: var(--text-color-blue);
+  text-align: center;
+  text-decoration: none;
+}

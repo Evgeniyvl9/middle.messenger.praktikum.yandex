@@ -1,0 +1,21 @@
+.loadFileForm {
+  /* max-width: 150px; */
+  text-align: center;
+  display: flex
+    ;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.loadFileForm label {
+  max-width: 150px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-align: center;
+  color: var(--text-color-blue);
+}
+.loadFileForm input[type="file"] {
+  display: none;
+}
